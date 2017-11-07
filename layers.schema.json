@@ -1,0 +1,30 @@
+{
+	"layers": [
+		{
+			"type": "tiles",
+			"name": "Openstreetmap",
+			"url": "...",
+			"base": "true	"
+		},
+		{
+			"type": "wms",
+			"name": "Namn",
+			"url": "..."
+		},
+		{
+			"type": "vectorgrid",
+			"name": "Vector tile",
+			"url": "..."
+		},
+		{
+			"type": "geojson",
+			"name": "Punktar",
+			"url": "...",
+			"interactivity": {
+				"popuptemplate": "<h2>{{NAME}}</h2><p>{{DESCRIPTION}}</p>",
+				"searchable": "true",
+				"search_url": "..."
+			}
+		}
+	]
+}

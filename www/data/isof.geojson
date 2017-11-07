@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Stockholm",
+        "department": "Språkrådet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.101327419281006,
+          59.313133418246196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Göteborg",
+        "department": "Dialekt-, namn- och folkminnesarkivet i Göteborg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.965506076812744,
+          57.70378036385503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Uppsala",
+        "department": "Dialekt- och folkminnesarkivet i Uppsala"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.633872032165527,
+          59.84875439791951
+        ]
+      }
+    }
+  ]
+}
