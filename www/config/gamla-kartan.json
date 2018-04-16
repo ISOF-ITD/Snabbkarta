@@ -1,0 +1,54 @@
+{
+	"config": {
+		"center": {
+			"lat": 62.14957278302264,
+			"lng": 16.549137199033005
+		},
+		"mapTitle": "\"Gamla\" kartan"
+	},
+	"layers": [
+		{
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchFields": [
+				"Namn",
+				"Socken"
+			],
+			"name": "Dilalekter",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/cite/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=cite:kartan&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"clustered": true,
+			"layers": "cite:kartan",
+			"popupTemplate": "<h2><%= name %></h2><p><%= dialekter %></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#3367bf",
+				"fillColor": "#478cff"
+			}
+		},
+		{
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchFields": [
+				"Namn",
+				"Socken"
+			],
+			"name": "Öland ågonamn",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/agonamn_oland/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=agonamn_oland:oland_agonamn&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"clustered": true,
+			"layers": "agonamn_oland:oland_agonamn",
+			"popupTemplate": "<h2><%= Namn %></h2><p>Socken: <%= Socken %><br/>Typ: <%= Lokaltyp %></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#a26c2c",
+				"fillColor": "#ff8a00"
+			},
+			"labelField": "Namn"
+		}
+	]
+}

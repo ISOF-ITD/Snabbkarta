@@ -1,0 +1,33 @@
+{
+	"config": {
+		"center": {
+			"lat": 56.74501384566918, 
+			"lng": 16.686352405714
+		},
+		"zoom": 5
+	},
+	"layers": [
+		{
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchFields": [
+				"Namn",
+				"Socken"
+			],
+			"name": "Öland ågonamn",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/agonamn_oland/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=agonamn_oland:oland_agonamn&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"clustered": true,
+			"layers": "agonamn_oland:oland_agonamn",
+			"popupTemplate": "<h2><%= Namn %></h2><p>Socken: <%= Socken %><br/>Typ: <%= Lokaltyp %></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#3367bf",
+				"fillColor": "#478cff"
+			},
+			"labelField": "Namn"
+		}
+	]
+}
