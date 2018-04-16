@@ -249,7 +249,7 @@ export default class Application extends React.Component {
 		});
 
 		if (layerData.popupTemplate) {
-			layer.on('click', function(event) {
+			layer.on('click', function(event) {wms
 				console.log(event);
 				var template = _.template(layerData.popupTemplate);
 
@@ -271,7 +271,7 @@ export default class Application extends React.Component {
 			transparent: true
 		});
 
-		this.addLayer(layer, layerData.name);
+		this.addLayer(layer, layerData);
 	}
 
 	render() {
