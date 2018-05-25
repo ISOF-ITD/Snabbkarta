@@ -34,22 +34,27 @@ export default class Application extends React.Component {
 	}
 
 	searchBoxChangeHandler(event) {
-		console.log(event.target.value);
-
+		// Sökfunktion
 		if (this.layerData[this.state.searchLayer.layerId]) {
-			if (event.target.value.length > 2) {			
+			if (event.target.value.length > 2) {
+				// Hittar layer objektet som vi ska söka
 				var searchLayer = this.layerData[this.state.searchLayer.layerId];
 
+				// kör addGeoJsonData med data som redan finns fast med filter function
 				this.addGeoJsonData(searchLayer.config, searchLayer.data, function(feature) {
 					var found = false;
 
+					// Söker i varje searchFields som defineras i config filen
 					_.each(searchLayer.config.searchFields, function(searchField) {
+	
 						if (event.target.value.substr(0, 1) == '-') {
+							// Om vi har '-' i början letar vi bara i slutet av sökfältet (efterled, t.ex. '-hage')
 							if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length-event.target.value.substr(1).length) == event.target.value.toLowerCase().substr(1)) {
 								found = true;
 							}
 						}
 						else {
+							// Annars letar i om texten finns någonstans i sökfältet
 							if (feature.properties[searchField].toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
 								found = true;
 							};
@@ -59,18 +64,14 @@ export default class Application extends React.Component {
 				});
 			}
 			else {
-				this.addGeoJsonData(this.layerData[this.state.searchLayer.layerId].config, this.layerData[this.state.searchLayer.layerId].data);
+				this.addGeoJsonData(searchLayer.config, searchLayer.data);
 			}
 		}
 	}
 
 	createStyleSheet() {
-		// Create the <style> tag
+		// Lägger till stylesheet
 		var style = document.createElement("style");
-
-		// Add a media (and/or media query) here if you'd like!
-		// style.setAttribute("media", "screen")
-		// style.setAttribute("media", "only screen and (max-width : 1024px)")
 
 		// WebKit hack :(
 		style.appendChild(document.createTextNode(""));
@@ -93,16 +94,18 @@ export default class Application extends React.Component {
 
 			console.log('Load config '+configFile);
 
+			// Laddar config.json filen
 			fetch('config/'+configFile)
 				.then(function(response) {
 					return response.json()
 				}).then(function(json) {
 					if (json.config) {
+						// Konfigurerar kartan utifrån config filen
 						this.configMap(json.config);
 					}
-					this.addLayers(_.filter(json.layers, function(layer) {
-						return !layer.hidden;
-					}));
+
+					// Lägger till alla layers som finns i config filen
+					this.addLayers(json.layers);
 				}.bind(this)).catch(function(ex) {
 					console.log('parsing failed', ex)
 				})
@@ -111,6 +114,7 @@ export default class Application extends React.Component {
 	}
 
 	configMap(config) {
+		// Konfigurerar kartan, setView till center och zoom som kan finnas i config filen
 		this.setState({
 			config: config
 		});
@@ -120,15 +124,19 @@ export default class Application extends React.Component {
 	}
 
 	addLayers(layers) {
+		// Lägger till layers från config filen
 		this.setState({
 			layers: layers
 		});
 
+		// Går igenom alla layers och lägger varje till kartan
 		_.each(layers, function(layer, index) {
+			// Filtrerar bort dem som har hidden = true
 			if (layer.hidden) {
 				return;
 			}
 
+			// Kör rätt function för varje typ av layer
 			var layerType = layer.type.toLowerCase();
 
 			if (layerType == 'geojson') {
@@ -144,12 +152,12 @@ export default class Application extends React.Component {
 	}
 
 	addLayer(layer, layerConfig) {
+		// Lägger layer till kartan
 		layer.addTo(this.refs.map.map);
 		this.refs.map.layersControl.addOverlay(layer, layerConfig.name, true);
 
 		if ((layerConfig.markerStyle && layerConfig.markerStyle.fillColor) || layerConfig.menuColor) {
-			console.log('Add style rule');
-
+			// Skapar css rule till customStyleSheet objectet, används för att visa färgsymbol i layers menyn
 			var color = (layerConfig.markerStyle && layerConfig.markerStyle.fillColor) ? layerConfig.markerStyle.fillColor : layerConfig.menuColor;
 			var styleRule = '.map-wrapper .leaflet-control-container .leaflet-control-layers .leaflet-control-layers-overlays label:nth-child('+(this.layerProcessIndex+1)+') span:before {'+
 				'content: " ";'+
@@ -172,7 +180,10 @@ export default class Application extends React.Component {
 	}
 
 	addGeoJson(layerConfig) {
+		// Lägger till geoJson layer
+
 		if (layerConfig.searchable) {
+			// Om layeren är sökbar sparar vi information om det i state
 			this.setState({
 				searchBoxVisible: true,
 				searchLayer: {
@@ -190,6 +201,8 @@ export default class Application extends React.Component {
 					config: layerConfig,
 					data: json
 				};
+
+				// Lägger till själva layern
 				this.addGeoJsonData(layerConfig, json);
 			}.bind(this)).catch(function(ex) {
 				console.log('parsing failed', ex)
@@ -198,10 +211,28 @@ export default class Application extends React.Component {
 	}
 
 	addGeoJsonData(layerConfig, data, filter) {
+		// Lägger till geoJsonLayer, tar den bort först om den redan finns
+		// Här kan man lägga till filter function för att filtrera features, sökfunktionen lägger till filter till addGeoJsonData
+
+		/*
+		Test filtrering, körs i developer tools:
+
+		isofKarta.addGeoJsonData(isofKarta.layerData.agonamn_oland.config, isofKarta.layerData.agonamn_oland.data, function(feature) {
+			return feature.geometry.coordinates[1] < 56.4160;
+		})
+
+		isofKarta.addGeoJsonData(isofKarta.layerData.agonamn_oland.config, isofKarta.layerData.agonamn_oland.data, function(feature) {
+			return feature.properties.Namn.indexOf('skog') > -1;
+		})
+
+		*/
+
 		if (this.leafletLayers[layerConfig.layerId]) {
 			this.refs.map.layersControl.removeLayer(this.leafletLayers[layerConfig.layerId]);
 			this.refs.map.map.removeLayer(this.leafletLayers[layerConfig.layerId]);
 		}
+
+		// 
 		var options = {
 			onEachFeature: function(feature, marker) {
 				if (layerConfig.popupTemplate && layerConfig.clustered) {
@@ -231,16 +262,6 @@ export default class Application extends React.Component {
 						icon: divIcon,
 						iconAnchor: [layerConfig.markerStyle.radius || 10, layerConfig.markerStyle.radius || 10]
 					});
-	/*
-					return L.circleMarker(latlng, {
-						radius: layerConfig.markerStyle.radius || 10,
-						weight: layerConfig.markerStyle.strokeWeight || 1,
-						color: layerConfig.markerStyle.strokeColor || '#444',
-						fill: true,
-						fillOpacity: layerConfig.markerStyle.fillOpacity || 1,
-						fillColor: layerConfig.markerStyle.fillColor || '#af0b25'
-					});
-	*/
 				}
 				else {
 					return L.marker(latlng);
@@ -248,6 +269,7 @@ export default class Application extends React.Component {
 			}
 		};
 
+		// Om filter function finns som argument lägger vi den till options för L.geoJSON
 		if (filter) {
 			options.filter = filter;
 		}
