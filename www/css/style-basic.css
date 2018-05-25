@@ -1571,3 +1571,20 @@ body {
   border-left: 1px solid #0000004f;
   z-index: 500;
 }
+.search-box {
+  position: fixed;
+  top: 110px;
+  left: 20px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  z-index: 500;
+}
+.search-box input {
+  margin: 0;
+  padding: 5;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}

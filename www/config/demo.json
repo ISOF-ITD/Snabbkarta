@@ -8,6 +8,7 @@
 	},
 	"layers": [
 		{
+			"layerId": "isof-avd",
 			"type": "geojson",
 			"name": "ISOF Avdelningar",
 			"url": "data/isof.geojson",
@@ -15,6 +16,7 @@
 			"menuColor": "#478cff"
 		},
 		{
+			"layerId": "SockenStad",
 			"hidden": true,
 			"type": "vectorgrid",
 			"name": "Socknar i Sverige",
@@ -35,6 +37,7 @@
 			"popupTemplate": "<h2><%= SnSt_Namn %></h2><p>Socken id: <%= SnSt_Id %></p>"
 		},
 		{
+			"layerId": "agonamn_oland-wms",
 			"hidden": true,
 			"type": "wms",
 			"name": "Öland ågonamn",
@@ -42,6 +45,7 @@
 			"layers": "agonamn_oland:oland_agonamn"
 		},
 		{
+			"layerId": "dialekter",
 			"hidden": false,
 			"type": "geojson",
 			"searchable": true,
@@ -63,6 +67,7 @@
 			}
 		},
 		{
+			"layerId": "agonamn_oland",
 			"hidden": false,
 			"type": "geojson",
 			"searchable": true,

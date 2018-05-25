@@ -4,10 +4,11 @@
 			"lat": 56.74501384566918, 
 			"lng": 16.686352405714
 		},
-		"zoom": 5
+		"zoom": 4
 	},
 	"layers": [
 		{
+			"layerId": "agonamn_oland",
 			"hidden": false,
 			"type": "geojson",
 			"searchable": true,

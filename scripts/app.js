@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory, Redirect } from 'react-router'
 
 import Application from './components/Application';
 
@@ -15,7 +14,7 @@ if (!window.Promise) {
 }
 
 
-// Initalisera React.js Router
+// Initalisera React.js
 ReactDOM.render(
 	<Application />,
 	document.getElementById('app')
