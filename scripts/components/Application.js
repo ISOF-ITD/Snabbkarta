@@ -249,7 +249,7 @@ export default class Application extends React.Component {
 		});
 
 		if (layerData.popupTemplate) {
-			layer.on('click', function(event) {wms
+			layer.on('click', function(event) {
 				console.log(event);
 				var template = _.template(layerData.popupTemplate);
 
