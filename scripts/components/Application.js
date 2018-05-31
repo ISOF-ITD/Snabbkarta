@@ -92,8 +92,6 @@ export default class Application extends React.Component {
 		if (window.location.search.indexOf('?config=') > -1) {
 			var configFile = window.location.search.split('=')[1];
 
-			console.log('Load config '+configFile);
-
 			// Laddar config.json filen
 			fetch('config/'+configFile)
 				.then(function(response) {
@@ -170,8 +168,6 @@ export default class Application extends React.Component {
 				'border-radius: 3px;'+
 				'background-color: '+color+';'
 			'}';
-
-			console.log(styleRule);
 
 			this.customStyleSheet.insertRule(styleRule);
 		}
@@ -346,7 +342,6 @@ export default class Application extends React.Component {
 
 		if (layerConfig.popupTemplate) {
 			layer.on('click', function(event) {
-				console.log(event);
 				var template = _.template(layerConfig.popupTemplate);
 
 				L.popup()
