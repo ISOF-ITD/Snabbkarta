@@ -16,7 +16,7 @@
 				"Namn",
 				"Socken"
 			],
-			"name": "Öland ågonamn",
+			"name": "Öland ägonamn",
 			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/agonamn_oland/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=agonamn_oland:oland_agonamn&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": true,
 			"layers": "agonamn_oland:oland_agonamn",
