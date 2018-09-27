@@ -12,6 +12,8 @@
 			"hidden": false,
 			"type": "geojson",
 			"searchable": true,
+			"searchTextSelect": true, 
+			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
 				"Namn",
 				"Socken"
@@ -29,6 +31,14 @@
 				"fillColor": "#478cff"
 			},
 			"labelField": "Namn"
+		}, 
+		{
+			"layerId": "socken",
+			"hidden": false,
+			"type": "wms",
+			"name": "Sockengränser",
+			"url": "http://map4.raa.se/geoserver/wms",
+			"layers": "GEM:socken"
 		}
 	]
 }

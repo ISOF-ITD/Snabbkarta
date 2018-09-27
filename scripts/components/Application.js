@@ -19,6 +19,8 @@ export default class Application extends React.Component {
 
 		this.searchBoxChangeHandler = this.searchBoxChangeHandler.bind(this);
 
+		this.searchTextSelectChangeHandler = this.searchTextSelectChangeHandler.bind(this);
+
 		// Registrera kartan som object i window så man kan komma åt det i Developer Console
 		window.isofKarta = this;
 
@@ -33,29 +35,55 @@ export default class Application extends React.Component {
 		};
 	}
 
+
 	searchBoxChangeHandler(event) {
+		this.search(event);
+	}
+
+	searchTextSelectChangeHandler(event) {
+		console.log('Select changed');
+		this.search(event);
+	}
+
+
+
+	search(event) {
+		var selected = document.getElementById("selected");
+		var searchBox = document.getElementById("search-field");
+		//console.log('searchbox', searchBox.value);
+		//console.log('eventtargetvalue', event.target.value);
+		//console.log('Sökning:', selected.options[selected.selectedIndex].value);
 		// Sökfunktion
 		if (this.layerData[this.state.searchLayer.layerId]) {
-			if (event.target.value.length > 2) {
-				// Hittar layer objektet som vi ska söka
-				var searchLayer = this.layerData[this.state.searchLayer.layerId];
+
+			// Hittar layer objektet som vi ska söka
+			var searchLayer = this.layerData[this.state.searchLayer.layerId];
+			if (searchBox.value.length > 2) {
+
 
 				// kör addGeoJsonData med data som redan finns fast med filter function
-				this.addGeoJsonData(searchLayer.config, searchLayer.data, function(feature) {
+				this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
 					var found = false;
 
 					// Söker i varje searchFields som defineras i config filen
-					_.each(searchLayer.config.searchFields, function(searchField) {
-	
-						if (event.target.value.substr(0, 1) == '-') {
-							// Om vi har '-' i början letar vi bara i slutet av sökfältet (efterled, t.ex. '-hage')
-							if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length-event.target.value.substr(1).length) == event.target.value.toLowerCase().substr(1)) {
+					_.each(searchLayer.config.searchFields, function (searchField) {
+
+						if (selected.options[selected.selectedIndex].value == 'endswith') {
+							// Sökresultat som sultar på sökterm. Efterled. 
+							if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
+								found = true;
+							}
+						}
+
+						else if (selected.options[selected.selectedIndex].value == 'startswith') {
+							// Sökresultat som börjar på sökterm. Förled. 
+							if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
 								found = true;
 							}
 						}
 						else {
-							// Annars letar i om texten finns någonstans i sökfältet
-							if (feature.properties[searchField].toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
+							// Sökresultat som innehåller sökterm. 
+							if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
 								found = true;
 							};
 						}
@@ -67,6 +95,8 @@ export default class Application extends React.Component {
 				this.addGeoJsonData(searchLayer.config, searchLayer.data);
 			}
 		}
+
+
 	}
 
 	createStyleSheet() {
@@ -93,10 +123,10 @@ export default class Application extends React.Component {
 			var configFile = window.location.search.split('=')[1];
 
 			// Laddar config.json filen
-			fetch('config/'+configFile)
-				.then(function(response) {
+			fetch('config/' + configFile)
+				.then(function (response) {
 					return response.json()
-				}).then(function(json) {
+				}).then(function (json) {
 					if (json.config) {
 						// Konfigurerar kartan utifrån config filen
 						this.configMap(json.config);
@@ -104,10 +134,10 @@ export default class Application extends React.Component {
 
 					// Lägger till alla layers som finns i config filen
 					this.addLayers(json.layers);
-				}.bind(this)).catch(function(ex) {
+				}.bind(this)).catch(function (ex) {
 					console.log('parsing failed', ex)
 				})
-			;
+				;
 		}
 	}
 
@@ -128,7 +158,7 @@ export default class Application extends React.Component {
 		});
 
 		// Går igenom alla layers och lägger varje till kartan
-		_.each(layers, function(layer, index) {
+		_.each(layers, function (layer, index) {
 			// Filtrerar bort dem som har hidden = true
 			if (layer.hidden) {
 				return;
@@ -157,16 +187,16 @@ export default class Application extends React.Component {
 		if ((layerConfig.markerStyle && layerConfig.markerStyle.fillColor) || layerConfig.menuColor) {
 			// Skapar css rule till customStyleSheet objectet, används för att visa färgsymbol i layers menyn
 			var color = (layerConfig.markerStyle && layerConfig.markerStyle.fillColor) ? layerConfig.markerStyle.fillColor : layerConfig.menuColor;
-			var styleRule = '.map-wrapper .leaflet-control-container .leaflet-control-layers .leaflet-control-layers-overlays label:nth-child('+(this.layerProcessIndex+1)+') span:before {'+
-				'content: " ";'+
-				'display: inline-block;'+
-				'position: relative;'+
-				'top: 4px;'+
-				'margin: 0 5px;'+
-				'width: 20px;'+
-				'height: 20px;'+
-				'border-radius: 3px;'+
-				'background-color: '+color+';'
+			var styleRule = '.map-wrapper .leaflet-control-container .leaflet-control-layers .leaflet-control-layers-overlays label:nth-child(' + (this.layerProcessIndex + 1) + ') span:before {' +
+				'content: " ";' +
+				'display: inline-block;' +
+				'position: relative;' +
+				'top: 4px;' +
+				'margin: 0 5px;' +
+				'width: 20px;' +
+				'height: 20px;' +
+				'border-radius: 3px;' +
+				'background-color: ' + color + ';'
 			'}';
 
 			this.customStyleSheet.insertRule(styleRule);
@@ -189,10 +219,19 @@ export default class Application extends React.Component {
 			});
 		}
 
+
+		if (layerConfig.searchTextSelect) {
+			// Meny till sökboxen. 
+			this.setState({
+				searchTextSelectVisible: true,
+
+			});
+		}
+
 		fetch(layerConfig.url)
-			.then(function(response) {
+			.then(function (response) {
 				return response.json()
-			}).then(function(json) {
+			}).then(function (json) {
 				this.layerData[layerConfig.layerId] = {
 					config: layerConfig,
 					data: json
@@ -200,10 +239,10 @@ export default class Application extends React.Component {
 
 				// Lägger till själva layern
 				this.addGeoJsonData(layerConfig, json);
-			}.bind(this)).catch(function(ex) {
+			}.bind(this)).catch(function (ex) {
 				console.log('parsing failed', ex)
 			})
-		;
+			;
 	}
 
 	addGeoJsonData(layerConfig, data, filter) {
@@ -230,7 +269,7 @@ export default class Application extends React.Component {
 
 		// 
 		var options = {
-			onEachFeature: function(feature, marker) {
+			onEachFeature: function (feature, marker) {
 				if (layerConfig.popupTemplate && layerConfig.clustered) {
 					marker.bindPopup(function (layer) {
 						var template = _.template(layerConfig.popupTemplate);
@@ -238,20 +277,20 @@ export default class Application extends React.Component {
 					});
 				}
 			},
-			pointToLayer: function(geoJsonPoint, latlng) {
+			pointToLayer: function (geoJsonPoint, latlng) {
 				if (layerConfig.markerStyle && layerConfig.markerStyle.type == 'circle') {
 					var divIcon = L.divIcon({
-						html: '<div class="map-circle-marker" style="border-radius: 100%;'+
-							'width: '+(layerConfig.markerStyle.radius*2 || 20)+'px;'+
-							'height: '+(layerConfig.markerStyle.radius*2 || 20)+'px;'+
-							'background-color: '+(layerConfig.markerStyle.fillColor || '#af0b25')+';'+
-							'border-color: '+(layerConfig.markerStyle.strokeColor || '#333')+';'+
-							'border-width: '+(layerConfig.markerStyle.strokeWeight+'px' || '1px')+';'+
-							'border-style: '+(layerConfig.markerStyle.strokeColor || layerConfig.markerStyle.strokeWeight ? 'solid' : 'none')+';'+
-							'">'+
-								(layerConfig.labelField ? '<div class="marker-label" style="top: '+(layerConfig.markerStyle.radius*2 || 20)+'px">'+geoJsonPoint.properties[layerConfig.labelField]+'</div>' : '')+
+						html: '<div class="map-circle-marker" style="border-radius: 100%;' +
+							'width: ' + (layerConfig.markerStyle.radius * 2 || 20) + 'px;' +
+							'height: ' + (layerConfig.markerStyle.radius * 2 || 20) + 'px;' +
+							'background-color: ' + (layerConfig.markerStyle.fillColor || '#af0b25') + ';' +
+							'border-color: ' + (layerConfig.markerStyle.strokeColor || '#333') + ';' +
+							'border-width: ' + (layerConfig.markerStyle.strokeWeight + 'px' || '1px') + ';' +
+							'border-style: ' + (layerConfig.markerStyle.strokeColor || layerConfig.markerStyle.strokeWeight ? 'solid' : 'none') + ';' +
+							'">' +
+							(layerConfig.labelField ? '<div class="marker-label" style="top: ' + (layerConfig.markerStyle.radius * 2 || 20) + 'px">' + geoJsonPoint.properties[layerConfig.labelField] + '</div>' : '') +
 							'</div>'
-						}
+					}
 					);
 
 					return L.marker(latlng, {
@@ -277,43 +316,43 @@ export default class Application extends React.Component {
 				showCoverageOnHover: false,
 				maxClusterRadius: 40,
 				iconCreateFunction: function (cluster) {
-				var childCount = cluster.getChildCount();
-				var c = ' marker-cluster-';
-				if (childCount < 10) {
-					c += 'small';
-				} else if (childCount < 20) {
-					c += 'medium';
-				} else {
-					c += 'large';
+					var childCount = cluster.getChildCount();
+					var c = ' marker-cluster-';
+					if (childCount < 10) {
+						c += 'small';
+					} else if (childCount < 20) {
+						c += 'medium';
+					} else {
+						c += 'large';
+					}
+
+					var divBackgroundStyle = '';
+
+					if (layerConfig.markerStyle && layerConfig.markerStyle.fillColor) {
+						divBackgroundStyle = 'style="background-color: ' + layerConfig.markerStyle.fillColor + '"'
+					}
+
+					return new L.DivIcon({
+						html: '<div ' + divBackgroundStyle + '><span>' +
+							'<b>' + childCount + '</b>' +
+							'</span></div>',
+						className: 'marker-cluster' + c,
+						iconSize: new L.Point(28, 28)
+					});
 				}
-
-				var divBackgroundStyle = '';
-
-				if (layerConfig.markerStyle && layerConfig.markerStyle.fillColor) {
-					divBackgroundStyle = 'style="background-color: '+layerConfig.markerStyle.fillColor+'"'
-				}
-
-				return new L.DivIcon({
-					html: '<div '+divBackgroundStyle+'><span>'+
-						'<b>'+childCount+'</b>'+
-						'</span></div>',
-					className: 'marker-cluster'+c,
-					iconSize: new L.Point(28, 28)
-				});
-			}
 			});
 
-				// Lägger geoJson layer till clusterGroup
+			// Lägger geoJson layer till clusterGroup
 			clusterGroup.addLayer(layer);
 
 			// Lägger clusterGroup till kartan
 			this.addLayer(clusterGroup, layerConfig);
 
-			this.leafletLayers[layerConfig.layerId] =  clusterGroup;
+			this.leafletLayers[layerConfig.layerId] = clusterGroup;
 		}
 		else {
 			if (layerConfig.popupTemplate) {
-				layer.bindPopup(function(marker) {
+				layer.bindPopup(function (marker) {
 					var template = _.template(layerConfig.popupTemplate);
 					return template(marker.feature.properties);
 				});
@@ -322,7 +361,7 @@ export default class Application extends React.Component {
 			// Lägger layer direkt till kartan, utan klustrering
 			this.addLayer(layer, layerConfig);
 
-			this.leafletLayers[layerConfig.layerId] =  layer;
+			this.leafletLayers[layerConfig.layerId] = layer;
 		}
 	}
 
@@ -330,7 +369,7 @@ export default class Application extends React.Component {
 		var layerStyles = {};
 
 		if (layerConfig.layers) {
-			_.each(layerConfig.layers, function(vectorLayer) {
+			_.each(layerConfig.layers, function (vectorLayer) {
 				layerStyles[vectorLayer.name] = vectorLayer.style;
 			});
 		}
@@ -341,7 +380,7 @@ export default class Application extends React.Component {
 		});
 
 		if (layerConfig.popupTemplate) {
-			layer.on('click', function(event) {
+			layer.on('click', function (event) {
 				var template = _.template(layerConfig.popupTemplate);
 
 				L.popup()
@@ -353,20 +392,20 @@ export default class Application extends React.Component {
 
 		this.addLayer(layer, layerConfig);
 
-		this.leafletLayers[layerConfig.layerId] =  layer;
-//		layer.bringToFront();
+		this.leafletLayers[layerConfig.layerId] = layer;
+		//		layer.bringToFront();
 	}
 
 	addWMSLayer(layerConfig) {
 		var layer = L.tileLayer.wms(layerConfig.url, {
 			layers: layerConfig.layers,
-			format: 'application/png',
+			format: 'image/png',
 			transparent: true
 		});
 
 		this.addLayer(layer, layerConfig);
 
-		this.leafletLayers[layerConfig.layerId] =  layer;
+		this.leafletLayers[layerConfig.layerId] = layer;
 	}
 
 	render() {
@@ -381,7 +420,17 @@ export default class Application extends React.Component {
 				{
 					this.state.searchBoxVisible &&
 					<div className="search-box">
-						<input placeholder="Sök" type="text" onChange={this.searchBoxChangeHandler} />
+						<input id="search-field" placeholder="Sök" type="text" onChange={this.searchBoxChangeHandler} />
+					</div>
+				}
+				{
+					this.state.searchTextSelectVisible &&
+					<div className="search-text-select">
+						<select id="selected" onChange={this.searchTextSelectChangeHandler}>
+							<option value="contains">Innehåller</option>
+							<option value="startswith">Börjar med</option>
+							<option value="endswith">Slutar med</option>
+						</select>
 					</div>
 				}
 
