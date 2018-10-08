@@ -16,13 +16,14 @@
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
 				"Namn",
-				"Socken"
+				"Ar",
+				"By_"
 			],
 			"name": "Öland ägonamn",
 			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/agonamn_oland/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=agonamn_oland:oland_agonamn&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": true,
 			"layers": "agonamn_oland:oland_agonamn",
-			"popupTemplate": "<h2><%= Namn %></h2><p>Socken: <%= Socken %><br/>Typ: <%= Lokaltyp %></p>",
+			"popupTemplate": "<h2><%= Namn %></h2><p>Socken: <%= Socken %><br/>Typ: <%= Lokaltyp %><br/>År: <%= Ar %><br/>By: <%= By_ %></p>",
 			"markerStyle": {
 				"type": "circle",
 				"radius": 10,

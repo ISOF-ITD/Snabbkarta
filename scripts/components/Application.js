@@ -36,20 +36,22 @@ export default class Application extends React.Component {
 	}
 
 
-	searchBoxChangeHandler(event) {
-		this.search(event);
+	searchBoxChangeHandler() {
+		this.search();
 	}
 
-	searchTextSelectChangeHandler(event) {
-		console.log('Select changed');
-		this.search(event);
+	searchTextSelectChangeHandler() {
+		//console.log('Select changed');
+		this.search();
 	}
 
 
 
-	search(event) {
-		var selected = document.getElementById("selected");
-		var searchBox = document.getElementById("search-field");
+	search() {
+		let selected = document.getElementById("selected");
+		let searchBox = document.getElementById("search-field");
+		let searchTerms = searchBox.value.toLowerCase().split(' ');
+		console.log(searchTerms);
 		//console.log('searchbox', searchBox.value);
 		//console.log('eventtargetvalue', event.target.value);
 		//console.log('Sökning:', selected.options[selected.selectedIndex].value);
@@ -83,9 +85,24 @@ export default class Application extends React.Component {
 						}
 						else {
 							// Sökresultat som innehåller sökterm. 
-							if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
+
+							// Old code: 
+							//	if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
+							//		found = true;
+							//	};
+							
+							// New code:
+							function hasHit(searchTerm) {
+								if (feature.properties[searchField].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+									return true;
+								}
+								else {
+									return false
+								}
+							}	
+							if (searchTerms.every(hasHit)) {
 								found = true;
-							};
+							}
 						}
 					});
 					return found;
