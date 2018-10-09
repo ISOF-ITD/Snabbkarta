@@ -15,15 +15,15 @@
 			"searchTextSelect": true, 
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
-				"Namn",
-				"Ar",
-				"By_"
+				"namn",
+				"ar",
+				"by_"
 			],
 			"name": "Öland ägonamn",
-			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/agonamn_oland/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=agonamn_oland:oland_agonamn&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/oland_agonamn_mysql/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=oland_agonamn_mysql:oland_agonamn_analys&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": true,
-			"layers": "agonamn_oland:oland_agonamn",
-			"popupTemplate": "<h2><%= Namn %></h2><p>Socken: <%= Socken %><br/>Typ: <%= Lokaltyp %><br/>År: <%= Ar %><br/>By: <%= By_ %></p>",
+			"layers": "agonamn_oland:oland_agonamn_analys",
+			"popupTemplate": "<h2><%= namn %></h2><p>Socken: <%= socken %><br/>Typ: <%= lokaltyp %><br/>År: <%= ar %><br/>By: <%= by_ %><br/>Huvudled: <%= hl %></p>",
 			"markerStyle": {
 				"type": "circle",
 				"radius": 10,
@@ -31,7 +31,7 @@
 				"strokeColor": "#3367bf",
 				"fillColor": "#478cff"
 			},
-			"labelField": "Namn"
+			"labelField": "namn"
 		}, 
 		{
 			"layerId": "socken",
