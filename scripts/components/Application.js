@@ -60,8 +60,9 @@ export default class Application extends React.Component {
 
 			// Hittar layer objektet som vi ska söka
 			var searchLayer = this.layerData[this.state.searchLayer.layerId];
-			if (searchBox.value.length > 2) {
-
+			
+			//if (searchBox.value.length > 2) {
+			if (searchBox.value.length > 0) {
 
 				// kör addGeoJsonData med data som redan finns fast med filter function
 				this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
@@ -417,7 +418,10 @@ export default class Application extends React.Component {
 		var layer = L.tileLayer.wms(layerConfig.url, {
 			layers: layerConfig.layers,
 			format: 'image/png',
-			transparent: true
+			transparent: true,
+			TILED: layerConfig.TILED,
+			ISBASELAYER: layerConfig.ISBASELAYER, 
+			TILESORIGIN: layerConfig.TILESORIGIN
 		});
 
 		this.addLayer(layer, layerConfig);
