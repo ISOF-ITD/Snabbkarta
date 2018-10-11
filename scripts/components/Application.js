@@ -51,70 +51,82 @@ export default class Application extends React.Component {
 		let selected = document.getElementById("selected");
 		let searchBox = document.getElementById("search-field");
 		let searchTerms = searchBox.value.toLowerCase().split(' ');
-		console.log(searchTerms);
-		//console.log('searchbox', searchBox.value);
-		//console.log('eventtargetvalue', event.target.value);
-		//console.log('Sökning:', selected.options[selected.selectedIndex].value);
-		// Sökfunktion
-		if (this.layerData[this.state.searchLayer.layerId]) {
+		let hitsString = ""; 
+		//console.log(searchTerms);
+		
+		//console.log(this.layerData);
+		//Start for: 
+		for (var layer in this.layerData) {
+			let counter = 0;
+			//console.log('searching ' + layer);
 
-			// Hittar layer objektet som vi ska söka
-			var searchLayer = this.layerData[this.state.searchLayer.layerId];
-			
-			//if (searchBox.value.length > 2) {
-			if (searchBox.value.length > 0) {
+			// Sökfunktion
+			if (this.layerData[layer]) {
 
-				// kör addGeoJsonData med data som redan finns fast med filter function
-				this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
-					var found = false;
+				// Hittar layer objektet som vi ska söka
+				var searchLayer = this.layerData[layer];
+				//console.log(this.layerData[this.state.searchLayer.layerId]);
 
-					// Söker i varje searchFields som defineras i config filen
-					_.each(searchLayer.config.searchFields, function (searchField) {
+				//if (searchBox.value.length > 2) {
+				if (searchBox.value.length > 0) {
 
-						if (selected.options[selected.selectedIndex].value == 'endswith') {
-							// Sökresultat som sultar på sökterm. Efterled. 
-							if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
-								found = true;
-							}
-						}
+					// kör addGeoJsonData med data som redan finns fast med filter function
+					this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
+						var found = false;
+						// Söker i varje searchFields som defineras i config filen
+						_.each(searchLayer.config.searchFields, function (searchField) {
 
-						else if (selected.options[selected.selectedIndex].value == 'startswith') {
-							// Sökresultat som börjar på sökterm. Förled. 
-							if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
-								found = true;
-							}
-						}
-						else {
-							// Sökresultat som innehåller sökterm. 
-
-							// Old code: 
-							//	if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
-							//		found = true;
-							//	};
-							
-							// New code:
-							function hasHit(searchTerm) {
-								if (feature.properties[searchField].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-									return true;
+							if (selected.options[selected.selectedIndex].value == 'endswith') {
+								// Sökresultat som sultar på sökterm. Efterled. 
+								if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
+									found = true;
+									counter++;
+									//console.log(feature.properties[searchField]);
 								}
-								else {
-									return false
-								}
-							}	
-							if (searchTerms.every(hasHit)) {
-								found = true;
 							}
-						}
+
+							else if (selected.options[selected.selectedIndex].value == 'startswith') {
+								// Sökresultat som börjar på sökterm. Förled. 
+								if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
+									found = true;
+									counter++;
+								}
+							}
+							else {
+								// Sökresultat som innehåller sökterm. 
+
+								// Old code: 
+								//	if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
+								//		found = true;
+								//	};
+
+								// New code:
+								function hasHit(searchTerm) {
+									if (feature.properties[searchField].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+										return true;
+									}
+									else {
+										return false
+									}
+								}
+								if (searchTerms.every(hasHit)) {
+									found = true;
+									counter++;
+								}
+							}
+						});
+						return found;
 					});
-					return found;
-				});
+				}
+				else {
+					this.addGeoJsonData(searchLayer.config, searchLayer.data);
+				}
+				//console.log(counter + ' träffar');
 			}
-			else {
-				this.addGeoJsonData(searchLayer.config, searchLayer.data);
-			}
+			hitsString += counter + ' träffar i ' + this.layerData[layer].config.name + '<br/>';
+			//Endfor: 
 		}
-
-
+		document.getElementById("hits").innerHTML = hitsString
 	}
 
 	createStyleSheet() {
@@ -420,7 +432,7 @@ export default class Application extends React.Component {
 			format: 'image/png',
 			transparent: true,
 			TILED: layerConfig.TILED,
-			ISBASELAYER: layerConfig.ISBASELAYER, 
+			ISBASELAYER: layerConfig.ISBASELAYER,
 			TILESORIGIN: layerConfig.TILESORIGIN
 		});
 
@@ -454,7 +466,11 @@ export default class Application extends React.Component {
 						</select>
 					</div>
 				}
-
+				{
+					<div className="search-hits">
+						<p id="hits"></p>
+					</div>
+				}
 				<MapBase layersControlStayOpen={true} disableSwedenMap={false} maxZoom="13" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
 
 			</div>

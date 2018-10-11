@@ -8,7 +8,7 @@
 	},
 	"layers": [
 		{
-			"layerId": "agonamn_oland",
+			"layerId": "agonamn_oland_1960",
 			"hidden": false,
 			"type": "geojson",
 			"searchable": true,
@@ -16,11 +16,35 @@
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
 				"namn",
-				"ar",
 				"by_"
 			],
-			"name": "Öland ägonamn",
-			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/oland_agonamn_mysql/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=oland_agonamn_mysql:oland_agonamn_analys&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"name": "Öland ägonamn 1960",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/oland_agonamn_mysql/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=oland_agonamn_mysql:oland_agonamn_analys&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326&CQL_FILTER=ar LIKE '1960'",
+			"clustered": true,
+			"layers": "agonamn_oland_mysql:oland_agonamn_analys",
+			"popupTemplate": "<h2><%= namn %></h2><p>Socken: <%= socken %><br/>Typ: <%= lokaltyp %><br/>År: <%= ar %><br/>By: <%= by_ %><br/>Huvudled: <%= hl %></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#bf3367",
+				"fillColor": "#ff478c"
+			},
+			"labelField": "namn"
+		}, 
+		{
+			"layerId": "agonamn_oland_2015",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchTextSelect": true, 
+			"searchTextSelectDefault" : "endswith", 
+			"searchFields": [
+				"namn",
+				"by_"
+			],
+			"name": "Öland ägonamn 2015",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/oland_agonamn_mysql/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=oland_agonamn_mysql:oland_agonamn_analys&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326&CQL_FILTER=ar LIKE '2015'",
 			"clustered": true,
 			"layers": "agonamn_oland_mysql:oland_agonamn_analys",
 			"popupTemplate": "<h2><%= namn %></h2><p>Socken: <%= socken %><br/>Typ: <%= lokaltyp %><br/>År: <%= ar %><br/>By: <%= by_ %><br/>Huvudled: <%= hl %></p>",
@@ -32,7 +56,7 @@
 				"fillColor": "#478cff"
 			},
 			"labelField": "namn"
-		}, 
+		},
 		{
 			"layerId": "socken",
 			"hidden": false,
