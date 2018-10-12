@@ -41,20 +41,44 @@ export default class Application extends React.Component {
 	}
 
 	searchTextSelectChangeHandler() {
-		//console.log('Select changed');
-		this.search();
+		let searchBox = document.getElementById("search-field");
+		if (searchBox.value.length > 0) {
+			this.search();
+		}
 	}
 
 
-
 	search() {
+
+		//TODO: Bryta ut funktion. 
+		function returnHighest(coordinate1, coordinate2) {
+			if (coordinate1 > coordinate2) {
+				return coordinate1
+			}
+			else { return coordinate2 }
+		}
+
+		//TODO: Bryta ut funktion. 
+		function returnLowest(coordinate1, coordinate2) {
+			if (coordinate1 < coordinate2) {
+				return coordinate1
+			}
+			else { return coordinate2 }
+		}
+
 		let selected = document.getElementById("selected");
 		let searchBox = document.getElementById("search-field");
 		let searchTerms = searchBox.value.toLowerCase().split(' ');
-		let hitsString = ""; 
+		let hitsString = "";
+		//let origX = this.state.config.center.lng;
+		//let origY = this.state.config.center.lat;
+		let minX = 180
+		let minY = 180
+		let maxX = -180
+		let maxY = -180
 		//console.log(searchTerms);
-		
 		//console.log(this.layerData);
+
 		//Start for: 
 		for (var layer in this.layerData) {
 			let counter = 0;
@@ -68,7 +92,7 @@ export default class Application extends React.Component {
 				//console.log(this.layerData[this.state.searchLayer.layerId]);
 
 				//if (searchBox.value.length > 2) {
-				if (searchBox.value.length > 0) {
+				if (searchBox.value.length > -1) {
 
 					// kör addGeoJsonData med data som redan finns fast med filter function
 					this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
@@ -81,6 +105,10 @@ export default class Application extends React.Component {
 								if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
 									found = true;
 									counter++;
+									minX = returnLowest(minX, feature.geometry.coordinates[0]);
+									minY = returnLowest(minY, feature.geometry.coordinates[1]);
+									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
 									//console.log(feature.properties[searchField]);
 								}
 							}
@@ -90,6 +118,10 @@ export default class Application extends React.Component {
 								if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
 									found = true;
 									counter++;
+									minX = returnLowest(minX, feature.geometry.coordinates[0]);
+									minY = returnLowest(minY, feature.geometry.coordinates[1]);
+									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
 								}
 							}
 							else {
@@ -100,7 +132,9 @@ export default class Application extends React.Component {
 								//		found = true;
 								//	};
 
-								// New code:
+								// Sökresultat som innehåller sökterm(er).
+								// New code: 
+								//TODO: Bryta ut funktion. 
 								function hasHit(searchTerm) {
 									if (feature.properties[searchField].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
 										return true;
@@ -109,9 +143,14 @@ export default class Application extends React.Component {
 										return false
 									}
 								}
+
 								if (searchTerms.every(hasHit)) {
 									found = true;
 									counter++;
+									minX = returnLowest(minX, feature.geometry.coordinates[0]);
+									minY = returnLowest(minY, feature.geometry.coordinates[1]);
+									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
 								}
 							}
 						});
@@ -127,6 +166,14 @@ export default class Application extends React.Component {
 			//Endfor: 
 		}
 		document.getElementById("hits").innerHTML = hitsString
+		//console.log(minX, minY, maxX, maxY);
+		var southWest = L.latLng(minY, minX);
+		var northEast = L.latLng(maxY, maxX);
+		var bounds = L.latLngBounds(southWest, northEast);
+		//console.log('bounds', bounds); 
+		if (minX != 180 && minY != 180 && maxX != -180 && maxY != -180) {
+			this.map.fitBounds(bounds, { padding: [50, 50] });
+		}
 	}
 
 	createStyleSheet() {
@@ -281,15 +328,15 @@ export default class Application extends React.Component {
 
 		/*
 		Test filtrering, körs i developer tools:
-
+	
 		isofKarta.addGeoJsonData(isofKarta.layerData.agonamn_oland.config, isofKarta.layerData.agonamn_oland.data, function(feature) {
 			return feature.geometry.coordinates[1] < 56.4160;
 		})
-
+	
 		isofKarta.addGeoJsonData(isofKarta.layerData.agonamn_oland.config, isofKarta.layerData.agonamn_oland.data, function(feature) {
 			return feature.properties.Namn.indexOf('skog') > -1;
 		})
-
+	
 		*/
 
 		if (this.leafletLayers[layerConfig.layerId]) {
