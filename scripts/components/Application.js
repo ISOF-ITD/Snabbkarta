@@ -73,9 +73,9 @@ export default class Application extends React.Component {
 		//let origX = this.state.config.center.lng;
 		//let origY = this.state.config.center.lat;
 		let minX = 180
-		let minY = 180
+		let minY = 90
 		let maxX = -180
-		let maxY = -180
+		let maxY = -90
 		//console.log(searchTerms);
 		//console.log(this.layerData);
 
@@ -83,7 +83,7 @@ export default class Application extends React.Component {
 		for (var layer in this.layerData) {
 			let counter = 0;
 			//console.log('searching ' + layer);
-
+			
 			// Sökfunktion
 			if (this.layerData[layer]) {
 
@@ -171,7 +171,7 @@ export default class Application extends React.Component {
 		var northEast = L.latLng(maxY, maxX);
 		var bounds = L.latLngBounds(southWest, northEast);
 		//console.log('bounds', bounds); 
-		if (minX != 180 && minY != 180 && maxX != -180 && maxY != -180) {
+		if (minX != 180 && minY != 90 && maxX != -180 && maxY != -90) {
 			this.map.fitBounds(bounds, { padding: [50, 50] });
 		}
 	}
