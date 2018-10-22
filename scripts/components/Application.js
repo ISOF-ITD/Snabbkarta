@@ -81,7 +81,7 @@ export default class Application extends React.Component {
 
 		//Start for: 
 		for (var layer in this.layerData) {
-			let counter = 0;
+			let idSet = new Set();  
 			//console.log('searching ' + layer);
 			
 			// Sökfunktion
@@ -104,12 +104,13 @@ export default class Application extends React.Component {
 								// Sökresultat som sultar på sökterm. Efterled. 
 								if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
 									found = true;
-									counter++;
 									minX = returnLowest(minX, feature.geometry.coordinates[0]);
 									minY = returnLowest(minY, feature.geometry.coordinates[1]);
 									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-									//console.log(feature.properties[searchField]);
+									//console.log('id', feature.id);
+									idSet.add(feature.id); 
+
 								}
 							}
 
@@ -117,11 +118,12 @@ export default class Application extends React.Component {
 								// Sökresultat som börjar på sökterm. Förled. 
 								if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
 									found = true;
-									counter++;
 									minX = returnLowest(minX, feature.geometry.coordinates[0]);
 									minY = returnLowest(minY, feature.geometry.coordinates[1]);
 									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+									//console.log('id', feature.id);
+									idSet.add(feature.id); 
 								}
 							}
 							else {
@@ -146,11 +148,12 @@ export default class Application extends React.Component {
 
 								if (searchTerms.every(hasHit)) {
 									found = true;
-									counter++;
 									minX = returnLowest(minX, feature.geometry.coordinates[0]);
 									minY = returnLowest(minY, feature.geometry.coordinates[1]);
 									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+									//console.log('id', feature.id);
+									idSet.add(feature.id); 
 								}
 							}
 						});
@@ -160,9 +163,10 @@ export default class Application extends React.Component {
 				else {
 					this.addGeoJsonData(searchLayer.config, searchLayer.data);
 				}
-				//console.log(counter + ' träffar');
+				
 			}
-			hitsString += counter + ' träffar i ' + this.layerData[layer].config.name + '<br/>';
+			
+			hitsString += idSet.size + ' träffar i ' + this.layerData[layer].config.name + '<br/>';
 			//Endfor: 
 		}
 		document.getElementById("hits").innerHTML = hitsString
