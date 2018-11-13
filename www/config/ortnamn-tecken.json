@@ -1,0 +1,34 @@
+{
+	"config": {
+		"center": {
+			"lat": 62.14957278302264,
+			"lng": 16.549137199033005
+		},
+		"mapTitle": "Exempel karta"
+	},
+	"layers": [
+		{
+			"layerId": "ortnamn_tecken",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchFields": [
+				"Namn",
+				"Link"
+			],
+			"name": "Ortnamn på teckenspråk",
+			"url": "http://localhost:8080/ISOF-Snabbkarta/www/config/ortnamn_teckensprak.geojson",
+			"clustered": true,
+			"layers": "agonamn_oland:oland_agonamn",
+			"popupTemplate": "<h2><%= namn %></h2><p>Namn: <%= namn %><br/>Länk: <%= link %> <br/><a href=\"<%= link %>\">Teckenfilm</a></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#a26c2c",
+				"fillColor": "#ff8a00"
+			},
+			"labelField": "namn"
+		}
+	]
+}
