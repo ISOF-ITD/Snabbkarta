@@ -17,7 +17,7 @@
 				"Link"
 			],
 			"name": "Ortnamn på teckenspråk",
-			"url": "http://localhost:8080/ISOF-Snabbkarta/www/config/ortnamn_teckensprak.geojson",
+			"url": "http://frigg-test.sprakochfolkminnen.se/static/js-apps/snabbkarta/config/ortnamn_teckensprak.geojson",
 			"clustered": true,
 			"layers": "agonamn_oland:oland_agonamn",
 			"popupTemplate": "<h2><%= namn %></h2><p>Namn: <%= namn %><br/>Länk: <%= link %> <br/><a href=\"<%= link %>\">Teckenfilm</a></p>",
