@@ -2,8 +2,8 @@
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "id": 1, "namn": "Norge", "link": "http://frigg-test.sprakochfolkminnen.se/teckenlistor/dictionary/public/glosstagsvideo/105" }, "geometry": { "type": "Point", "coordinates": [ 9.897036229104147, 60.859271366020252 ] } },
-{ "type": "Feature", "properties": { "id": 2, "namn": "Oslo", "link": "http://frigg-test.sprakochfolkminnen.se/teckenlistor/dictionary/public/glosstagsvideo/107" }, "geometry": { "type": "Point", "coordinates": [ 10.750139344155581, 59.881033832667995 ] } },
-{ "type": "Feature", "properties": { "id": 3, "namn": "Sverige", "link": "http://frigg-test.sprakochfolkminnen.se/teckenlistor/dictionary/public/glosstagsvideo/103" }, "geometry": { "type": "Point", "coordinates": [ 15.69047532206905, 59.813551480598036 ] } }
+{ "type": "Feature", "properties": { "id": 1, "namn": "Norge", "link": "https://frigg-test.sprakochfolkminnen.se/teckenlistor/dictionary/public/glosstagsvideo/105" }, "geometry": { "type": "Point", "coordinates": [ 9.897036229104147, 60.859271366020252 ] } },
+{ "type": "Feature", "properties": { "id": 2, "namn": "Oslo", "link": "https://frigg-test.sprakochfolkminnen.se/teckenlistor/dictionary/public/glosstagsvideo/107" }, "geometry": { "type": "Point", "coordinates": [ 10.750139344155581, 59.881033832667995 ] } },
+{ "type": "Feature", "properties": { "id": 3, "namn": "Sverige", "link": "https://frigg-test.sprakochfolkminnen.se/teckenlistor/dictionary/public/glosstagsvideo/103" }, "geometry": { "type": "Point", "coordinates": [ 15.69047532206905, 59.813551480598036 ] } }
 ]
 }
