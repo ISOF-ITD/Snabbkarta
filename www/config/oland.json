@@ -62,7 +62,7 @@
 			"hidden": false,
 			"type": "wms",
 			"name": "Sockengränser",
-			"url": "http://map4.raa.se/geoserver/wms",
+			"url": "https://karta.raa.se/geo/arkreg_v1.0/wms",
 			"layers": "socken",
 			"TILED": true,
 			"TILESORIGIN": "-2238400, 5287200"

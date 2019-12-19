@@ -1,3 +1,4 @@
 export default {
-	appUrl: 'http://www4.sprakochfolkminnen.se/sagner/'
+	//Is it used in this app?:
+	appUrl: 'https://frigg.isof.se/static/js-apps/snabbkarta/'
 };
