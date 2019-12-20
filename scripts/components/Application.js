@@ -126,6 +126,18 @@ export default class Application extends React.Component {
 									idSet.add(feature.id); 
 								}
 							}
+							else if (selected.options[selected.selectedIndex].value == 'mainpart') {
+								// Mainly for Ölandskartan: Sökresultat som börjar på huvudled. 
+								if (feature.properties["hl"].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
+									found = true;
+									minX = returnLowest(minX, feature.geometry.coordinates[0]);
+									minY = returnLowest(minY, feature.geometry.coordinates[1]);
+									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+									//console.log('id', feature.id);
+									idSet.add(feature.id); 
+								}
+							}
 							else {
 								// Sökresultat som innehåller sökterm. 
 
@@ -305,6 +317,14 @@ export default class Application extends React.Component {
 			// Meny till sökboxen. 
 			this.setState({
 				searchTextSelectVisible: true,
+
+			});
+		}
+
+		if (layerConfig.searchTextSelectExtended) {
+			// Meny till sökboxen. 
+			this.setState({
+				searchTextSelectExtendedVisible: true,
 
 			});
 		}
@@ -514,6 +534,17 @@ export default class Application extends React.Component {
 							<option value="contains">Innehåller</option>
 							<option value="startswith">Börjar med</option>
 							<option value="endswith">Slutar med</option>
+						</select>
+					</div>
+				}
+				{
+					this.state.searchTextSelectExtendedVisible &&
+					<div className="search-text-select">
+						<select id="selected" onChange={this.searchTextSelectChangeHandler}>
+							<option value="contains">Innehåller</option>
+							<option value="startswith">Börjar med</option>
+							<option value="endswith">Slutar med</option>
+							<option value="hl">Hudvudled</option>
 						</select>
 					</div>
 				}
