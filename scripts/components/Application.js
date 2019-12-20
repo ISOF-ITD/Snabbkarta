@@ -544,7 +544,7 @@ export default class Application extends React.Component {
 							<option value="contains">Innehåller</option>
 							<option value="startswith">Börjar med</option>
 							<option value="endswith">Slutar med</option>
-							<option value="hl">Hudvudled</option>
+							<option value="hl">Huvudled</option>
 						</select>
 					</div>
 				}
