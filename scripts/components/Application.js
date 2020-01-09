@@ -97,37 +97,12 @@ export default class Application extends React.Component {
 					// kör addGeoJsonData med data som redan finns fast med filter function
 					this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
 						var found = false;
+
 						// Söker i varje searchFields som defineras i config filen
 						_.each(searchLayer.config.searchFields, function (searchField) {
 
-							if (selected.options[selected.selectedIndex].value == 'endswith') {
-								// Sökresultat som sultar på sökterm. Efterled. 
-								if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
-									found = true;
-									minX = returnLowest(minX, feature.geometry.coordinates[0]);
-									minY = returnLowest(minY, feature.geometry.coordinates[1]);
-									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
-									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-									//console.log('id', feature.id);
-									idSet.add(feature.id); 
-
-								}
-							}
-
-							else if (selected.options[selected.selectedIndex].value == 'startswith') {
-								// Sökresultat som börjar på sökterm. Förled. 
-								if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
-									found = true;
-									minX = returnLowest(minX, feature.geometry.coordinates[0]);
-									minY = returnLowest(minY, feature.geometry.coordinates[1]);
-									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
-									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-									//console.log('id', feature.id);
-									idSet.add(feature.id); 
-								}
-							}
-							else if (selected.options[selected.selectedIndex].value == 'mainpart') {
-								// Mainly for Ölandskartan: Sökresultat som börjar på huvudled. 
+							// Mainly for Ölandskartan: Sökresultat som börjar på huvudled. 
+							if (selected.options[selected.selectedIndex].value == 'mainpart') {
 								if (feature.properties["hl"].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
 									found = true;
 									minX = returnLowest(minX, feature.geometry.coordinates[0]);
@@ -137,35 +112,63 @@ export default class Application extends React.Component {
 									//console.log('id', feature.id);
 									idSet.add(feature.id); 
 								}
-							}
-							else {
-								// Sökresultat som innehåller sökterm. 
+							} else 
+							{
+								if (selected.options[selected.selectedIndex].value == 'endswith') {
+									// Sökresultat som sultar på sökterm. Efterled. 
+									if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
+										found = true;
+										minX = returnLowest(minX, feature.geometry.coordinates[0]);
+										minY = returnLowest(minY, feature.geometry.coordinates[1]);
+										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+										//console.log('id', feature.id);
+										idSet.add(feature.id); 
 
-								// Old code: 
-								//	if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
-								//		found = true;
-								//	};
-
-								// Sökresultat som innehåller sökterm(er).
-								// New code: 
-								//TODO: Bryta ut funktion. 
-								function hasHit(searchTerm) {
-									if (feature.properties[searchField].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-										return true;
-									}
-									else {
-										return false
 									}
 								}
 
-								if (searchTerms.every(hasHit)) {
-									found = true;
-									minX = returnLowest(minX, feature.geometry.coordinates[0]);
-									minY = returnLowest(minY, feature.geometry.coordinates[1]);
-									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
-									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-									//console.log('id', feature.id);
-									idSet.add(feature.id); 
+								else if (selected.options[selected.selectedIndex].value == 'startswith') {
+									// Sökresultat som börjar på sökterm. Förled. 
+									if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
+										found = true;
+										minX = returnLowest(minX, feature.geometry.coordinates[0]);
+										minY = returnLowest(minY, feature.geometry.coordinates[1]);
+										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+										//console.log('id', feature.id);
+										idSet.add(feature.id); 
+									}
+								}
+								else {
+									// Sökresultat som innehåller sökterm. 
+
+									// Old code: 
+									//	if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
+									//		found = true;
+									//	};
+
+									// Sökresultat som innehåller sökterm(er).
+									// New code: 
+									//TODO: Bryta ut funktion. 
+									function hasHit(searchTerm) {
+										if (feature.properties[searchField].toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+											return true;
+										}
+										else {
+											return false
+										}
+									}
+
+									if (searchTerms.every(hasHit)) {
+										found = true;
+										minX = returnLowest(minX, feature.geometry.coordinates[0]);
+										minY = returnLowest(minY, feature.geometry.coordinates[1]);
+										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+										//console.log('id', feature.id);
+										idSet.add(feature.id); 
+									}
 								}
 							}
 						});
