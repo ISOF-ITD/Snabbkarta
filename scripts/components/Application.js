@@ -78,6 +78,7 @@ export default class Application extends React.Component {
 		let maxY = -90
 		//console.log(searchTerms);
 		//console.log(this.layerData);
+		//console.log(selected.options[selected.selectedIndex].value)
 
 		//Start for: 
 		for (var layer in this.layerData) {
@@ -547,7 +548,7 @@ export default class Application extends React.Component {
 							<option value="contains">Innehåller</option>
 							<option value="startswith">Börjar med</option>
 							<option value="endswith">Slutar med</option>
-							<option value="hl">Huvudled</option>
+							<option value="mainpart">Huvudled</option>
 						</select>
 					</div>
 				}
