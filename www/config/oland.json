@@ -27,8 +27,8 @@
 				"type": "circle",
 				"radius": 10,
 				"strokeWeight": 1,
-				"strokeColor": "#bf3367",
-				"fillColor": "#ff478c"
+				"strokeColor": "#505050",
+				"fillColor": "#505050"
 			},
 			"labelField": "namn"
 		}, 

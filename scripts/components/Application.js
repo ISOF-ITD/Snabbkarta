@@ -104,14 +104,16 @@ export default class Application extends React.Component {
 
 							// Mainly for Ölandskartan: Sökresultat som börjar på huvudled. 
 							if (selected.options[selected.selectedIndex].value == 'mainpart') {
-								if (feature.properties["hl"].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
-									found = true;
-									minX = returnLowest(minX, feature.geometry.coordinates[0]);
-									minY = returnLowest(minY, feature.geometry.coordinates[1]);
-									maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
-									maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-									//console.log('id', feature.id);
-									idSet.add(feature.id); 
+								if (feature.properties["hl"]) {
+									if (feature.properties["hl"].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
+										found = true;
+										minX = returnLowest(minX, feature.geometry.coordinates[0]);
+										minY = returnLowest(minY, feature.geometry.coordinates[1]);
+										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
+										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
+										//console.log('id', feature.id);
+										idSet.add(feature.id); 
+									}
 								}
 							} else 
 							{
