@@ -4,9 +4,34 @@
 			"lat": 56.74501384566918, 
 			"lng": 16.686352405714
 		},
-		"zoom": 4
+		"zoom": 9
 	},
 	"layers": [
+		{
+			"layerId": "bebyggelsenamn_oland",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchTextSelectExtended": true, 
+			"searchTextSelectDefault" : "endswith", 
+			"searchFields": [
+				"namn",
+				"aldstabelagg"
+			],
+			"name": "Bebyggelsenamn",
+			"__url": "http://localhost:8080/ISOF-Snabbkarta/www/data/SOKa7.geojson",
+			"url": "https://frigg.isof.se/static/data/olandskartan/SOKa7.geojson",
+			"clustered": true,
+			"popupTemplate": "<h2><%= namn %></h2><p>Äldsta belägg: <%= aldstabelagg %><br/>Årtal: <%= artal %><br/>Källa: <%= kalla %><br/>Text: <%= text %></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#bf3367",
+				"fillColor": "#ff478c"
+			},
+			"labelField": "namn"
+		}, 
 		{
 			"layerId": "agonamn_oland_1960",
 			"hidden": false,
@@ -18,7 +43,7 @@
 				"namn",
 				"by_"
 			],
-			"name": "Öland ägonamn 1960",
+			"name": "Ägonamn 1960",
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/oland_agonamn_mysql/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=oland_agonamn_mysql:oland_agonamn_analys&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326&CQL_FILTER=ar LIKE '1960'",
 			"clustered": true,
 			"layers": "agonamn_oland_mysql:oland_agonamn_analys",
@@ -43,7 +68,7 @@
 				"namn",
 				"by_"
 			],
-			"name": "Öland ägonamn 2015",
+			"name": "Ägonamn 2015",
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/oland_agonamn_mysql/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=oland_agonamn_mysql:oland_agonamn_analys&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326&CQL_FILTER=ar LIKE '2015'",
 			"clustered": true,
 			"layers": "agonamn_oland_mysql:oland_agonamn_analys",

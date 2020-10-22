@@ -379,7 +379,7 @@ export default class Application extends React.Component {
 					marker.bindPopup(function (layer) {
 						var template = _.template(layerConfig.popupTemplate);
 						return template(feature.properties);
-					});
+					}, {maxWidth: 700, minWidth:200});
 				}
 			},
 			pointToLayer: function (geoJsonPoint, latlng) {
@@ -557,7 +557,7 @@ export default class Application extends React.Component {
 						<p id="hits"></p>
 					</div>
 				}
-				<MapBase layersControlStayOpen={true} disableSwedenMap={false} maxZoom="13" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
+				<MapBase layersControlStayOpen={true} disableSwedenMap={false} minZoom="6" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
 
 			</div>
 		);
