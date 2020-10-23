@@ -8,6 +8,8 @@
 
 @import "../ISOF-React-modules/less/sitevision.less";
 
+@import "../ISOF-React-modules/less/ui-components/popupwindow.less";
+
 @color-red: #a6192e;
 @color-red-lighter: #d4454c;
 @color-red-divider: #b62837;
@@ -49,6 +51,25 @@ body {
 	img {
 		max-width: 120px;
 	}
+}
+
+.help-button {
+	position: fixed;
+
+	top: 20px;
+	right: 60px;
+
+	z-index: 500;
+}
+
+.help-popup {
+	position: fixed;
+	background-color: white;
+
+	top: 20px;
+	right: 120px;
+
+	z-index: 1000;
 }
 
 .leaflet-popup-content {
