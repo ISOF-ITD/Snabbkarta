@@ -4,7 +4,7 @@
 			"lat": 62.14957278302264,
 			"lng": 16.549137199033005
 		},
-		"mapTitle": "Exempel karta"
+		"mapTitle": "Ortnamn på teckenspråk"
 	},
 	"layers": [
 		{
@@ -12,23 +12,28 @@
 			"hidden": false,
 			"type": "geojson",
 			"searchable": true,
+			"searchable": true,
+			"searchTextSelectExtended": true, 
+			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
-				"namn",
-				"link"
+				"Ortnamn",
+				"Forklaring_svenska",
+				"Forklaring_tecken"
 			],
 			"name": "Ortnamn på teckenspråk",
-			"url": "https://frigg-test.sprakochfolkminnen.se/static/js-apps/snabbkarta/config/ortnamn_teckensprak.geojson",
+			"url": "http://localhost:8080/ISOF-Snabbkarta/www/data/ortnamn-teckensprak.geojson",
+			"__url": "https://frigg.isof-test.se/static/data/ortnamn-teckensprak/ortnamn-teckensprak.geojson",
 			"clustered": true,
-			"layers": "agonamn_oland:oland_agonamn",
-			"popupTemplate": "<h2><%= namn %></h2><p>Namn: <%= namn %><br/>Länk: <%= link %> <br/><a href=\"<%= link %>\">Teckenfilm</a></p>",
+			"popupTemplate": "<h2><%= Ortnamn %></h2><video autoplay id=\"teckenfilnamn\" controls muted style=\"max-width: 400px;max-height: 300px\"> <source src=<% print('http://localhost:8080/ISOF-Snabbkarta/www/data/' + teckenfilnamn) %> type=\"video/mp4\"> Din webbläsare stödjer inte video taggen. </video><p><b>Förklaring svenska: </b><%= Forklaring_svenska %><br/><p><b>Förklaring tecken: </b><%= Forklaring_tecken %><br/><b>Länk: </b></p>",
+			"__popupTemplate": "<h2><%= Ortnamn %></h2><video autoplay id=\"teckenfilnamn\" controls muted style=\"max-width: 400px;max-height: 300px\"> <source src=<% print('https://frigg.isof-test.se/static/data/ortnamn-teckensprak' + teckenfilnamn) %> type=\"video/mp4\"> Din webbläsare stödjer inte video taggen. </video><p><b>Förklaring svenska: </b><%= Forklaring_svenska %><br/><p><b>Förklaring tecken: </b><%= Forklaring_tecken %><br/><b>Länk: </b></p>",
 			"markerStyle": {
 				"type": "circle",
 				"radius": 10,
 				"strokeWeight": 1,
-				"strokeColor": "#a26c2c",
-				"fillColor": "#ff8a00"
+				"strokeColor": "#505050",
+				"fillColor": "#505050"
 			},
-			"labelField": "namn"
+			"labelField": "Ortnamn"
 		}
 	]
 }
