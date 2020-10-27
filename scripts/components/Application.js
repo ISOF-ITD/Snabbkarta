@@ -8,6 +8,11 @@ window._ = _;
 
 import MapBase from './../../ISOF-React-modules/components/views/MapBase';
 
+import InformationButton from './../../ISOF-React-modules/components/views/InformationButton';
+import InformationOverlay from './../../ISOF-React-modules/components/views/InformationOverlay';
+
+//import HelpButton from './../../ISOF-React-modules/components/views/HelpButton';
+//import HelpOverlay from './../../ISOF-React-modules/components/views/HelpOverlay';
 
 import EventBus from 'eventbusjs';
 
@@ -17,10 +22,6 @@ export default class Application extends React.Component {
 
 		// Lägg till globalt eventBus variable för att skicka data mellan moduler
 		window.eventBus = EventBus;
-
-		this.helpButtonClickHandler = this.helpButtonClickHandler.bind(this);
-
-		this.closeButtonClickHandler = this.closeButtonClickHandler.bind(this);
 
 		this.searchBoxChangeHandler = this.searchBoxChangeHandler.bind(this);
 
@@ -41,18 +42,6 @@ export default class Application extends React.Component {
 		};
 	}
 
-
-	helpButtonClickHandler() {
-		this.setState({
-			showHelpPopup: true
-		});
-	}
-
-	closeButtonClickHandler() {
-		this.setState({
-			showHelpPopup: false
-		});
-	}
 
 	searchBoxChangeHandler() {
 		this.search();
@@ -537,26 +526,25 @@ export default class Application extends React.Component {
 	}
 
 	render() {
+		var title = 'Hjälp';
+		var overlayContent = '';
+		var mainpart = '';
 		if (!!this.state.config) {
 			if (!!this.state.config.helpPopup) {
-				if (this.state.showHelpPopup) {
-					var overlayContent = <div className="popup-wrapper popup-content-wrapper page-content help-popup">
-						<p>Faktaruta Ölandskarta</p>
-						<p></p>
-						<p>Denna karta med sökfunktion visa alla ägonamn som är insamlade i projektet Ägonamn i Södra Ölands odlingslandskap. Om du vill se alla namn kan du zooma in kartan över Öland så dyker alla namn upp på den geografiska punkt som de är upptecknade. I ett utzoomat läge dyker inte alla namn upp utan istället ser du en siffra som talar om hur många namn som finns. Då finns möjligheten att zooma in eller klicka på punkten för att se vilka namn som finns där.
-						</p>
-						<p></p>
-						<p>I sökrutan till vänster kan man söka på ett särskilt namn eller ett namn som innehåller en särskild led eller börjar eller slutar på ett särskilt sätt. Sökfunktionen är alltid inställd på att man vill söka på namn som innehåller en särskild led men under sökrutan kan man ändra så att man kan söka på namn som börjar eller slutar med en viss bokstavskombination. Om jag till exempel vill veta hur många namn som innehåller horva skriver jag in horva och får 184 träffar för materialet från 1960 och 167 träffar från 2015. Om jag istället söker på Börjar med horva får jag 5 träffar vardera för de olika årtalen. Ändrar jag slutligen till Slutar med och skriver horvan får jag 138 träffar 1960 och 99 träffar 2015. Antalet träffar kan man även se under Sökrutan.
-						I rutan till höger finns kartinställningarna. I den översta delen kan man välja vilken karta man vill ha som underlag. Om man är intresserad av att se exakta områden för namnen kan man med fördel välja ESRI World Imagery där man ser ägornas gränser tydligt i en satellitbild. Man kan även välja att se sockengränserna på kartan om man är intersserad av en särskild sockens namn. Längst ner i samma ruta kan man välja vilka årtal man vill ska visas på kartan.
-						På kartan kan man klicka på varje punkt med ett namn och där se vilken socken namnet ligger inom, vilken marktyp som namnet avser (i de fall upptecknaren har fyllt i information), vilket år som namnet brukats, vilken by som ägan tillhör och även namnets huvudled. Den sista leden är värdefull om man vill se alla namn som innehåller samma huvudled även om huvudleden kanske står i plural , t.ex. kan man få träff på Kliverhorvorna när man söker på horva. 
-						</p>
-						<p><br/><button className="button-primary" onClick={this.closeButtonClickHandler}>Stäng</button></p>
-					</div>;
+				if (this.state.config.helpText) {
+					overlayContent = this.state.config.helpText;
 				}
+			}
+			if (!!this.state.config.mapTitle) {
+				title = this.state.config.mapTitle;
+			}
+			if (this.state.config.mainpart) {
+				mainpart = <option value="mainpart">Huvudled</option>
 			}
 		}
 
 		return (
+
 			<div className="map-ui">
 
 				{
@@ -564,10 +552,6 @@ export default class Application extends React.Component {
 					<h1 className="map-title">{this.state.config.mapTitle}</h1>
 				}
 
-				{
-					this.state.config && this.state.config.helpPopup &&
-					<button type="button" className="button-primary help-button" onClick={this.helpButtonClickHandler}>Hjälp</button> 
-				}
 				{
 					this.state.searchBoxVisible &&
 					<div className="search-box">
@@ -591,7 +575,7 @@ export default class Application extends React.Component {
 							<option value="contains">Innehåller</option>
 							<option value="startswith">Börjar med</option>
 							<option value="endswith">Slutar med</option>
-							<option value="mainpart">Huvudled</option>
+							{mainpart}
 						</select>
 					</div>
 				}
@@ -602,6 +586,9 @@ export default class Application extends React.Component {
 				}
 
 				<MapBase layersControlStayOpen={true} disableSwedenMap={false} minZoom="6" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
+
+				<InformationButton title={title} type="Uppteckning" location="app" text={overlayContent}/>
+				<InformationOverlay />
 
 				{overlayContent}
 

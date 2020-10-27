@@ -5,7 +5,8 @@
 			"lng": 16.549137199033005
 		},
 		"mapTitle": "Ortnamn på teckenspråk",
-		"helpPopup": false
+		"helpPopup": true,
+		"helpText": "Ortnamn på teckenspråk"
 	},
 	"layers": [
 		{
