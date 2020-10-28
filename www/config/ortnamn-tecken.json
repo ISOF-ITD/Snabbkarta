@@ -6,7 +6,7 @@
 		},
 		"mapTitle": "Ortnamn på teckenspråk",
 		"helpPopup": true,
-		"helpText": "Ortnamn på teckenspråk"
+		"helpText": "<b>Ortnamn på teckenspråk</b><br><a href=\"https://www.isof.se/sprak/minoritetssprak/svenskt-teckensprak.html\">Läs mer om teckenspråk här</a>. <br><a href=\"https://www.isof.se/sprak/namn/ortnamn.html\">Läs om ortnamn här</a>. <br>Se även ortnamn på teckenspråk i <a href=\"https://www.teckensprakslexikon.su.se/karta\">teckensprakslexikon</a>. "
 	},
 	"layers": [
 		{
