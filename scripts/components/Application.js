@@ -389,6 +389,7 @@ export default class Application extends React.Component {
 						var template = _.template(layerConfig.popupTemplate);
 						return template(feature.properties);
 					}, {maxWidth: 700, minWidth:200});
+					// To avoid too large display extent of video files set smaller maximum extent: {maxWidth: 700, minWidth:200}
 				}
 			},
 			pointToLayer: function (geoJsonPoint, latlng) {
