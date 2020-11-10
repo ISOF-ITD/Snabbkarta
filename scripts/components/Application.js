@@ -536,8 +536,8 @@ export default class Application extends React.Component {
 					overlayContent = this.state.config.helpText;
 				}
 			}
-			if (!!this.state.config.mapTitle) {
-				title = this.state.config.mapTitle;
+			if (!!this.state.config.helpTitle) {
+				title = this.state.config.helpTitle;
 			}
 			if (this.state.config.mainpart) {
 				mainpart = <option value="mainpart">Huvudled</option>
