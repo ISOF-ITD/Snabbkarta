@@ -27,7 +27,7 @@
 			"__url": "https://frigg.isof.se/static/data/olandskartan/oland-agonamn-1960-isidori-t.txt",
 			"clustered": true,
 			"layers": "Sifferkartor:Ortnamn-sifferkartor",
-			"popupTemplate": "<h2><%= Ortnamn %></h2><p>Nummerlank: <%= Nummerlank %><br/>Kartlank: <%= Kartlank %><br/>Kartsiffra: <%= Kartsiffra %><br/>Insamlare: <%= Insamlare %><br/>Postid: <%= Postid %><br/>Arkivkortsid: <%= Arkivkorts %><br/><a href=\"https://filemaker.isof.se/Kartor_dokument/Blekinge/3_Torhamn.jpg\">Karta:</a></p>",
+			"popupTemplate": "<h2><%= Ortnamn %></h2><p>Nummerlank: <%= Nummerlank %><br/>Kartlank: <%= Kartlank %><br/>Kartsiffra: <%= Kartsiffra %><br/>Insamlare: <%= Insamlare %><br/>Postid: <%= Postid %><br/>Arkivkortsid: <%= Arkivkorts %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\">Karta:</a></p>",
 			"markerStyle": {
 				"type": "circle",
 				"radius": 10,
