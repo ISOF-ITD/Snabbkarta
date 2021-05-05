@@ -25,7 +25,7 @@
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Sifferkartor-ekonomiska-kartan-isof&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": false,
 			"layers": "Sifferkartor:Sifferkartor-ekonomiska-kartan-isof",
-			"popupTemplate": "<h2><%= BLAD %></h2><p>Ruta: <%= RUTA %><br/>Kartlank: <%= Kartlank %><br/>Kartid: <%= kartid %><br/>Fullname: <%= FullName %><br/>Metod: <%= Metod %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\">Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\">Nummerförteckning:</a></p>",
+			"popupTemplate": "<h2><%= BLAD %></h2><p>Ruta: <%= RUTA %><br/>Kartlank: <%= Kartlank %><br/>Kartid: <%= kartid %><br/>Fullname: <%= FullName %><br/>Metod: <%= Metod %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\" target=\"_blank\" >Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\" target=\"_blank\" >Nummerförteckning:</a></p>",
 			"labelField": "kartid"
 		}, 
 		{
@@ -43,7 +43,7 @@
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Ortnamn-sifferkartor&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": true,
 			"layers": "Sifferkartor:Ortnamn-sifferkartor",
-			"popupTemplate": "<h2><%= Ortnamn %></h2><p>Nummerlank: <%= Nummerlank %><br/>Kartlank: <%= Kartlank %><br/>Kartsiffra: <%= Kartsiffra %><br/>Insamlare: <%= Insamlare %><br/>Postid: <%= Postid %><br/>Arkivkortsid: <%= Arkivkorts %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\">Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\">Nummerförteckning:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\">Uppteckning:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476\">Uppteckning med data:</a></p>",
+			"popupTemplate": "<h2><%= Ortnamn %></h2><p>Nummerlank: <%= Nummerlank %><br/>Kartlank: <%= Kartlank %><br/>Kartsiffra: <%= Kartsiffra %><br/>Insamlare: <%= Insamlare %><br/>Postid: <%= Postid %><br/>Arkivkortsid: <%= Arkivkorts %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\">Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\" target=\"_blank\" >Nummerförteckning:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/<%= Arkivkorts %>/image\" target=\"_blank\" >Uppteckning:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/<%= Arkivkorts %>\" target=\"_blank\" >Uppteckning med data:</a></p>",
 			"markerStyle": {
 				"type": "circle",
 				"radius": 10,
