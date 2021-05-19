@@ -5,9 +5,9 @@
 			"lng": 16.549137199033005
 		},
 		"helpTitle": "Instruktioner",
-		"mainpart": true,
+		"mainpart": false,
 		"helpPopup": true,
-		"helpText": "<b>Om kartan</b><br>Denna karta visar sifferkartor som finns och koordiantsatta ortnamn från sifferkartor. Sökning görs på ortnamn för ortnamnen och kartbladsid för sifferkartorna. <br><br><a href=\"https://www.isof.se/sprak/namn/ortnamn.html\">Läs om ortnamn</a>"
+		"helpText": "<b>Layer examples. "
 	},
 	"layers": [
 		{
@@ -27,7 +27,17 @@
 			"layers": "Sifferkartor:Sifferkartor-ekonomiska-kartan-isof",
 			"popupTemplate": "<h2><%= BLAD %></h2><p>Ruta: <%= RUTA %><br/>Kartlank: <%= Kartlank %><br/>Kartid: <%= kartid %><br/>Fullname: <%= FullName %><br/>Metod: <%= Metod %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\" target=\"_blank\" rel=\"noopener noreferrer\" >Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\" target=\"_blank\" rel=\"noopener noreferrer\" >Nummerförteckning:</a></p>",
 			"labelField": "kartid"
-		}, 
+		},
+		{
+			"layerId": "Ortnamn-sifferkartor",
+			"hidden": false,
+			"type": "wms",
+			"name": "Ortnamn på sifferkartor - alla",
+			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/Sifferkartor/wms",
+			"layers": "Ortnamn-sifferkartor",
+			"TILED": true,
+			"TILESORIGIN": "-2238400, 5287200"
+		},
 		{
 			"layerId": "Ortnamn-sifferkartor-wfs",
 			"hidden": false,
@@ -36,10 +46,9 @@
 			"searchTextSelectExtended": true, 
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
-				"Ortnamn",
-				"Insamlare"
+				"Ortnamn"
 			],
-			"name": "Ortnamn sifferkartor",
+			"name": "Ortnamn sifferkartor - Sök",
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Ortnamn-sifferkartor&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": true,
 			"layers": "Sifferkartor:Ortnamn-sifferkartor",
@@ -52,16 +61,6 @@
 				"fillColor": "#ff478c"
 			},
 			"labelField": "Ortnamn"
-		}, 
-		{
-			"layerId": "Ortnamn-sifferkartor",
-			"hidden": false,
-			"type": "wms",
-			"name": "Ortnamn på sifferkartor",
-			"url": "https://oden-test.sprakochfolkminnen.se/geoserver/Sifferkartor/wms",
-			"layers": "Ortnamn-sifferkartor",
-			"TILED": true,
-			"TILESORIGIN": "-2238400, 5287200"
 		},
 		{
 			"layerId": "socken",

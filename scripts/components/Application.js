@@ -311,6 +311,32 @@ export default class Application extends React.Component {
 		this.layerProcessIndex++;
 	}
 
+	//Example https://leafletjs.com/examples/choropleth/
+	// https://stackoverflow.com/questions/34858377/leaflet-how-to-style-polygons-from-geojson-data
+	//Not used yet
+	getAreaColor(feature){
+		console.log(feature)
+		  switch (feature.properties.Name){
+			case 'Area One' : return 'blue' ;
+		  case 'Area Two' : return 'yellow' ;
+			  break;
+		}
+	  };
+
+	//Example https://leafletjs.com/examples/choropleth/
+	// https://stackoverflow.com/questions/34858377/leaflet-how-to-style-polygons-from-geojson-data
+	//Not used yet
+ 	areaStyle(feature){
+		  return {
+			fillColor: getAreaColor(feature),
+		  weight: 2,
+		  opacity: 1,
+		  color: 'white',
+		  dashArray: '3',
+		  fillOpacity: 0.5
+		}
+	  };
+
 	addGeoJson(layerConfig) {
 		// Lägger till geoJson layer
 
@@ -473,6 +499,10 @@ export default class Application extends React.Component {
 				});
 			}
 
+			//Example https://stackoverflow.com/questions/34858377/leaflet-how-to-style-polygons-from-geojson-data
+			//http://jsfiddle.net/hx5pxdt8/
+			//L.geoJson(myData, {style: areaStyle}).addTo(map);			
+
 			// Lägger layer direkt till kartan, utan klustrering
 			this.addLayer(layer, layerConfig);
 
@@ -516,9 +546,10 @@ export default class Application extends React.Component {
 			layers: layerConfig.layers,
 			format: 'image/png',
 			transparent: true,
+			hidden: layerConfig.hidden,
 			TILED: layerConfig.TILED,
 			ISBASELAYER: layerConfig.ISBASELAYER,
-			TILESORIGIN: layerConfig.TILESORIGIN
+			TILESORIGIN: layerConfig.TILESORIGIN,
 		});
 
 		this.addLayer(layer, layerConfig);
@@ -586,7 +617,7 @@ export default class Application extends React.Component {
 					</div>
 				}
 
-				<MapBase layersControlStayOpen={true} disableSwedenMap={false} minZoom="6" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
+				<MapBase layersControlStayOpen={true} disableSwedenMap={false} ignoreOverlayLayers={true} minZoom="6" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
 
 				<InformationButton title={title} type="Uppteckning" location="app" text={overlayContent}/>
 				<InformationOverlay />
