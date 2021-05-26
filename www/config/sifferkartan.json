@@ -18,14 +18,14 @@
 			"searchTextSelectExtended": true, 
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
-				"BLAD",
-				"kartid"
+				"kartbladsi",
+				"accessions"
 			],
 			"name": "Sifferkartor ekonomiska kartan",
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Sifferkartor-ekonomiska-kartan-isof&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": false,
 			"layers": "Sifferkartor:Sifferkartor-ekonomiska-kartan-isof",
-			"popupTemplate": "<h2><%= BLAD %></h2><p>Ruta: <%= RUTA %><br/>Kartlank: <%= Kartlank %><br/>Kartid: <%= kartid %><br/>Fullname: <%= FullName %><br/>Metod: <%= Metod %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\" target=\"_blank\" rel=\"noopener noreferrer\" >Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\" target=\"_blank\" rel=\"noopener noreferrer\" >Nummerförteckning:</a></p>",
+			"popupTemplate": "<h2><%= kartbladsi %></h2><br/>Kartfilnamn urlencode: <%= kartlank %><br/>Kartid: <%= kartbladsi %><br/>Sifferkartid: <%= sifferkart %><br/>Accession: <%= accessions %><br/>Insamlare: <%= insamlare %><br/>Antal sifferkartor: <%= antalfiler %><br/><a href=\"//filemaker.isof.se/Kartor-dokument/<%= kartlank %>\" target=\"_blank\" rel=\"noopener noreferrer\" >Karta:</a><br/>Alla kartor:</a><%= kartlankar %></p>",
 			"labelField": "kartid"
 		},
 		{
