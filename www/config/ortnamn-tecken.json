@@ -19,12 +19,12 @@
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
 				"Ortnamn",
-				"Forklaring_svenska",
-				"Forklaring_tecken"
+				//"Forklaring_svenska",
+				//"Forklaring_tecken"
 			],
 			"name": "Ortnamn på teckenspråk",
 			"__url": "http://localhost:8080/ISOF-Snabbkarta/www/data/ortnamn-teckensprak.geojson",
-			"url": "https://frigg-test.isof.se/static/data/ortnamn-teckensprak/ortnamn-teckensprak.geojson",
+			"url": "https://frigg.isof.se/static/data/ortnamn-teckensprak/ortnamn-teckensprak.geojson",
 			"clustered": true,
 			"__popupTemplate": "<h2><%= Ortnamn %></h2><video autoplay id=\"teckenfilnamn\" controls muted style=\"max-width: 400px;max-height: 300px\"> <source src=<% print('http://localhost:8080/ISOF-Snabbkarta/www/data/' + teckenfilnamn) %> type=\"video/mp4\"> Din webbläsare stödjer inte video taggen. </video><p><b>Förklaring svenska: </b><%= Forklaring_svenska %><br/><p><b>Förklaring tecken: </b><%= Forklaring_tecken %><br/><b>Länk: </b></p>",
 			"popupTemplate": "<h2><%= Ortnamn %></h2><video autoplay id=\"teckenfilnamn\" controls muted style=\"max-width: 400px;max-height: 300px\"> <source src=<% print('https://frigg-test.isof.se/static/data/ortnamn-teckensprak/' + teckenfilnamn) %> type=\"video/mp4\"> Din webbläsare stödjer inte video taggen. </video><p><b>Förklaring svenska: </b><%= Forklaring_svenska %><br/><p><b>Förklaring tecken: </b><%= Forklaring_tecken %><br/><b>Länk: </b></p>",
