@@ -617,7 +617,7 @@ export default class Application extends React.Component {
 					</div>
 				}
 
-				<MapBase layersControlStayOpen={true} disableSwedenMap={false} ignoreOverlayLayers={true} minZoom="6" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
+				<MapBase layersControlStayOpen={true} disableSwedenMap={false} ignoreOverlayLayers={true} minZoom="5" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
 
 				<InformationButton title={title} type="Uppteckning" location="app" text={overlayContent}/>
 				<InformationOverlay />
