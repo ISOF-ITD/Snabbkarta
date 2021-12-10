@@ -584,7 +584,7 @@ export default class Application extends React.Component {
 					<div className="map-title">
 					{
 						this.state.config && this.state.config.mapTitle &&
-						<strong>{this.state.config.mapTitle}</strong>
+						<text>{this.state.config.mapTitle}</text>
 					}
 					</div>
 				</div>
