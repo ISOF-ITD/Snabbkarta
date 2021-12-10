@@ -579,10 +579,15 @@ export default class Application extends React.Component {
 
 			<div className="map-ui">
 
-				{
-					this.state.config && this.state.config.mapTitle &&
-					<h1 className="map-title">{this.state.config.mapTitle}</h1>
-				}
+				<div className="isof-app">
+				<a className="isof-logo" href="https://www.isof.se"><img src="img/isof_logotyp.svg" /></a>
+					<div className="map-title">
+					{
+						this.state.config && this.state.config.mapTitle &&
+						<strong>{this.state.config.mapTitle}</strong>
+					}
+					</div>
+				</div>
 
 				{
 					this.state.searchBoxVisible &&

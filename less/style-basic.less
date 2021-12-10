@@ -88,16 +88,35 @@ body {
 	font-size: 1rem;
 }
 
-.isof-logo {
+.isof-app {
 	position: fixed;
+	//display: inline-flex;
 
-	top: 20px;
-	left: 20px;
+	margin-top: 20px;
+	margin-left: 20px;
+	padding-right: 10px;
 
 	z-index: 500;
 
+	background-color: @color-lighter-isof;
+
 	img {
-		max-width: 120px;
+		//max-width: 120px;
+		height: 3.0rem;
+		padding: 5px 10px 5px 5px;
+	}
+	.map-title {
+		//position: absolute;
+		//display: contents;
+		display: ruby-text-container;
+		//text-align: center;
+		//vertical-align: middle;
+
+		color: white;
+		font-family: 'Open Sans', Arial, Helvetica;
+		font-weight: normal;
+
+		z-index: 500;
 	}
 }
 
@@ -182,25 +201,6 @@ body {
 				}
 			}
 		}
-	}
-}
-
-.map-ui {
-	.map-title {
-		position: absolute;
-
-		top: 10px;
-		left: 160px;
-
-		padding: 10px 10px 10px 20px;
-
-		color: @color-darker-isof;
-		font-family: 'Open Sans', Arial, Helvetica;
-		font-weight: normal;
-
-		border-left: 1px solid #0000004f;
-
-		z-index: 500;
 	}
 }
 
