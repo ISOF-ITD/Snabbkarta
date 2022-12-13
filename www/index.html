@@ -8,6 +8,58 @@
     <title>Snabbkarta - Institutet för språk och folkminnen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" media="all" href="css/style-basic.css" />
+
+    <!-- Matomo -->
+   <script>
+    const hostname = window.location.hostname;
+    const app_name = hostname.split('.')[0]
+    const is_dev = ["127.0.0.1", "localhost", "0.0.0.0"].some((element) =>
+       hostname.includes(element)
+    );
+    const is_test = ["-test."].some((element) => hostname.includes(element));
+    const ENV = is_dev ? "dev" : is_test ? "test" : "prod";
+
+    const matomo_site_ids = {
+       'dev': null,
+       'test': null,
+       'olandskartan': 96,
+       'ortnamn-tecken': 97,
+    }
+
+    const siteId = matomo_site_ids[ENV] || matomo_site_ids[app_name];
+
+    console.log("Matomo siteId: " + siteId);
+
+    const app_names = {
+        'olandskartan': 'Ölandskartan - Institutet för språk och folkminnen',
+        'ortnamn-tecken': 'Ortnamn på teckenspråk - Institutet för språk och folkminnen',
+    }
+
+    if (ENV == "prod") {
+        document.title = app_names[app_name];
+    }
+
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    currentUrl = '/' + window.location.hash.substr(1);
+    //wait for new title before sending data to matomo
+    setTimeout(function () {
+       _paq.push(['setCustomUrl', currentUrl]);
+       _paq.push(['setDocumentTitle', document.title]);
+       _paq.push(['enableLinkTracking']);
+       _paq.push(['trackPageView']);
+       (function () {
+          var u = "https://matomo.isof.se/";
+          _paq.push(['setTrackerUrl', u + 'matomo.php']);
+          _paq.push(['setSiteId', siteId]);
+          var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+          g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+       })();
+    }, 1000);
+
+    var currentUrl = location.href;
+ </script>
+ <!-- End Matomo Code -->
 </head>
 
 <body>
