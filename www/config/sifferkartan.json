@@ -43,13 +43,14 @@
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
 				"kartbladsid",
-				"grouped"
+				"sok"
 			],
 			"name": "Generalstabskartan Norra",
-			"url": "data/sifferkartor_generalstabskartan_norra_geo.geojson",
+			"url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_generalstabskartan_norra_geo.geojson",
+			"__url": "data/sifferkartor_generalstabskartan_norra_geo.geojson",
 			"clustered": false,
 			"layers": "Sifferkartor:Sifferkartor-gn-kartan-isof",
-			"popupTemplate": "<div><h2><%= kartbladsid %></h2>Antal sifferkartor: <%= antal %>group: <%= grouped %>",
+			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= kartbladsid %></h3><%= bladnamn %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
 			"labelField": "kartbladsid"
 		},
 		{

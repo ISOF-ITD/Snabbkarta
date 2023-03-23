@@ -410,12 +410,15 @@ export default class Application extends React.Component {
 		// 
 		var options = {
 			onEachFeature: function (feature, marker) {
-				if (layerConfig.popupTemplate && layerConfig.clustered) {
+				if (layerConfig.popupTemplate && layerConfig.popupExpanded) {
 					marker.bindPopup(function (layer) {
 						var template = _.template(layerConfig.popupTemplate);
 						return template(feature.properties);
-					}, {maxWidth: 700, minWidth:200});
+					}, {maxWidth: 400, minWidth:200});
 					// To avoid too large display extent of video files set smaller maximum extent: {maxWidth: 700, minWidth:200}
+					// See also popupTemplate in www/config/APP-NAME.json
+					// Example in ortnamn-tecken.json:
+					// <div class="leaflet-popup-content" style="width: 701px;"><h2>Östersund</h2><video autoplay="" id="teckenfilnamn" controls="" muted="" style="max-width: 400px;max-height: 300px;z-index: 600">
 				}
 			},
 			pointToLayer: function (geoJsonPoint, latlng) {
