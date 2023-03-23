@@ -80,6 +80,7 @@
 			"clustered": true,
 			"layers": "Sifferkartor:Ortnamn-sifferkartor",
 			"popupTemplate": "<h2><%= Ortnamn %></h2><p>Nummerlank: <%= Nummerlank %><br/>Kartlank: <%= Kartlank %><br/>Kartsiffra: <%= Kartsiffra %><br/>Insamlare: <%= Insamlare %><br/>Sifferkartor-postid: <%= Postid %><br/>Arkivkortsid: <%= Arkivkorts %><br/><a href=\"https://filemaker.isof.se/Kartor-dokument/Blekinge/3_Torhamn.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Karta:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/133476/image\" target=\"_blank\" rel=\"noopener noreferrer\" >Nummerförteckning:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/<%= Arkivkorts %>/image\" target=\"_blank\"  rel=\"noopener noreferrer\" >Uppteckning:</a><br/><a href=\"https://placenameservice.isof.se/v1/place-name-basis/<%= Arkivkorts %>\" target=\"_blank\" rel=\"noopener noreferrer\" >Uppteckning med data:</a></p>",
+			"popupExpanded": true,
 			"markerStyle": {
 				"type": "circle",
 				"radius": 10,
