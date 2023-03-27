@@ -54,6 +54,25 @@
 			"labelField": "kartbladsid"
 		},
 		{
+			"layerId": "Sifferkartor-Gs-kartan",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchTextSelectExtended": true, 
+			"searchTextSelectDefault" : "endswith", 
+			"searchFields": [
+				"kartbladsid",
+				"sok"
+			],
+			"name": "Generalstabskartan Södra",
+			"url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_generalstabskartan_sodra_geo.geojson",
+			"__url": "data/sifferkartor_generalstabskartan_sodra_geo.geojson",
+			"clustered": false,
+			"layers": "Sifferkartor:Sifferkartor-gs-kartan-isof",
+			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= kartbladsid %></h3><%= bladnamn %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
+			"labelField": "kartbladsid"
+		},
+		{
 			"layerId": "Ortnamn-sifferkartor",
 			"hidden": false,
 			"type": "wms",
