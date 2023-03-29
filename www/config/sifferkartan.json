@@ -34,7 +34,34 @@
 			"__comment_one_col_all_files_popupTemplate": "<h2><%= kartbladsi %></h2>Kartfilnamn urlencode: <%= kartlank %><br/>Kartid: <%= kartbladsi %><br/>Sifferkartid: <%= sifferkart %><br/>Accession: <%= accessions %><br/>Insamlare: <%= insamlare %><br/>Antal sifferkartor: <%= antalfiler %><br/><a href=\"//filemaker.isof.se/Kartor-dokument/<%= kartlank %>\" target=\"_blank\" rel=\"noopener noreferrer\" >Karta:</a><br/>Alla kartor:</a><%= kartlankar %></p>",
 			"labelField": "kartid"
 		},
-		{
+			{
+				"layerId": "Sifferkartor-socken",
+				"hidden": false,
+				"type": "geojson",
+				"searchable": true,
+				"searchTextSelectExtended": true, 
+				"searchTextSelectDefault" : "endswith", 
+				"searchFields": [
+					"sockenstadnamn",
+					"sok"
+					],
+				"name": "Sifferkartor-socken",
+				"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
+				"url": "data/sifferkartor_socken_punkt_geo.geojson",
+				"clustered": true,
+				"layers": "Sifferkartor:sifferkartor_socken_punkt_geo",
+				"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3><%= place %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
+				"popupExpanded": true,
+				"markerStyle": {
+					"type": "circle",
+					"radius": 10,
+					"strokeWeight": 1,
+					"strokeColor": "#505050",
+					"fillColor": "#505050"
+				},
+				"labelField": "sockenstadnamn"
+			},
+			{
 			"layerId": "Sifferkartor-Gn-kartan",
 			"hidden": false,
 			"type": "geojson",
