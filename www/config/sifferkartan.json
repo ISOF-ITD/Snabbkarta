@@ -46,8 +46,8 @@
 					"sok"
 					],
 				"name": "Sifferkartor-socken",
-				"url": "static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
-				"__url": "data/sifferkartor_socken_punkt_geo.geojson",
+				"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
+				"url": "data/sifferkartor_socken_punkt_geo.geojson",
 				"clustered": true,
 				"layers": "Sifferkartor:sifferkartor_socken_punkt_geo",
 				"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3>SockenStad/ATA-id: <%= sockenstadkod %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
@@ -73,8 +73,8 @@
 				"sok"
 			],
 			"name": "Generalstabskartan Norra",
-			"url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_generalstabskartan_norra_geo.geojson",
-			"__url": "data/sifferkartor_generalstabskartan_norra_geo.geojson",
+			"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_generalstabskartan_norra_geo.geojson",
+			"url": "data/sifferkartor_generalstabskartan_norra_geo.geojson",
 			"clustered": false,
 			"layers": "Sifferkartor:Sifferkartor-gn-kartan-isof",
 			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= kartbladsid %></h3><%= bladnamn %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
@@ -92,8 +92,8 @@
 				"sok"
 			],
 			"name": "Generalstabskartan Södra",
-			"url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_generalstabskartan_sodra_geo.geojson",
-			"__url": "data/sifferkartor_generalstabskartan_sodra_geo.geojson",
+			"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_generalstabskartan_sodra_geo.geojson",
+			"url": "data/sifferkartor_generalstabskartan_sodra_geo.geojson",
 			"clustered": false,
 			"layers": "Sifferkartor:Sifferkartor-gs-kartan-isof",
 			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= kartbladsid %></h3><%= bladnamn %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
