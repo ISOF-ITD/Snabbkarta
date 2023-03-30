@@ -46,11 +46,11 @@
 					"sok"
 					],
 				"name": "Sifferkartor-socken",
-				"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
-				"url": "data/sifferkartor_socken_punkt_geo.geojson",
+				"url": "static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
+				"__url": "data/sifferkartor_socken_punkt_geo.geojson",
 				"clustered": true,
 				"layers": "Sifferkartor:sifferkartor_socken_punkt_geo",
-				"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3><%= place %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
+				"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3>SockenStad/ATA-id: <%= sockenstadkod %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
 				"popupExpanded": true,
 				"markerStyle": {
 					"type": "circle",
