@@ -162,11 +162,18 @@ export default class Application extends React.Component {
 									// New code: 
 									//TODO: Bryta ut funktion. 
 									function hasHit(searchTerms) {
-										if (feature.properties[searchField].toLowerCase().indexOf(searchTerms.toLowerCase()) > -1) {
-											return true;
-										}
-										else {
-											return false
+										if (feature.properties[searchField]) {						
+											if (searchTerms && searchTerms.length > 0) { 
+												if (feature.properties[searchField].toLowerCase().indexOf(searchTerms.toLowerCase()) > -1) {
+													return true;
+												}
+												else {
+													return false
+												}
+											}
+										} else {
+											//console.log(searchField)
+											//console.log(feature.properties)
 										}
 									}
 
