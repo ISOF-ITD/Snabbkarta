@@ -37,33 +37,6 @@
 			"labelField": "kartid"
 		},
 		{
-			"layerId": "Sifferkartor-socken",
-			"hidden": false,
-			"type": "geojson",
-			"searchable": true,
-			"searchTextSelectExtended": true, 
-			"searchTextSelectDefault" : "endswith", 
-			"searchFields": [
-				"sockenstadnamn",
-				"sok"
-				],
-			"name": "Sifferkartor-socken",
-			"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
-			"url": "data/sifferkartor_socken_punkt_geo.geojson",
-			"clustered": true,
-			"layers": "Sifferkartor:sifferkartor_socken_punkt_geo",
-			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3> <%= comment %><br/> SockenStad-id: <%= sockenstadkod %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
-			"popupExpanded": true,
-			"markerStyle": {
-				"type": "circle",
-				"radius": 10,
-				"strokeWeight": 1,
-				"strokeColor": "#505050",
-				"fillColor": "#505050"
-			},
-			"labelField": "sockenstadnamn"
-		},
-		{
 			"layerId": "Sifferkartor-Gn-kartan",
 			"hidden": false,
 			"type": "geojson",
@@ -111,7 +84,7 @@
 			"searchFields": [
 				"Ortnamn"
 			],
-			"name": "Ortnamn sifferkartor - Sök",
+			"name": "Sökbara ortnamn",
 			"_url": "https://oden.isof.se/geoserver/WS_KF/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=WS_KF:Ortnamn-sifferkartor&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Ortnamn-sifferkartor&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
 			"clustered": true,
@@ -126,6 +99,33 @@
 				"fillColor": "#ff478c"
 			},
 			"labelField": "Ortnamn"
+		},
+		{
+			"layerId": "Sifferkartor-socken",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchTextSelectExtended": true, 
+			"searchTextSelectDefault" : "endswith", 
+			"searchFields": [
+				"sockenstadnamn",
+				"sok"
+				],
+			"name": "Sökbara socknar",
+			"__url": "https://frigg-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_socken_punkt_geo.geojson",
+			"url": "data/sifferkartor_socken_punkt_geo.geojson",
+			"clustered": true,
+			"layers": "Sifferkartor:sifferkartor_socken_punkt_geo",
+			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3> <%= comment %><br/> SockenStad-id: <%= sockenstadkod %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
+			"popupExpanded": true,
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#505050",
+				"fillColor": "#505050"
+			},
+			"labelField": "sockenstadnamn"
 		},
 		{
 			"layerId": "socken",
