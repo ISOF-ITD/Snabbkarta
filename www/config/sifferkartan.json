@@ -82,7 +82,7 @@
 			"searchTextSelectExtended": true, 
 			"searchTextSelectDefault" : "endswith", 
 			"searchFields": [
-				"Ortnamn"
+				"ortnamn"
 			],
 			"name": "Sökbara ortnamn",
 			"__url_new_server": "https://oden.isof.se/geoserver/WS_KF/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=WS_KF:Ortnamn-sifferkartor&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
@@ -101,7 +101,7 @@
 				"strokeColor": "#bf3367",
 				"fillColor": "#ff478c"
 			},
-			"labelField": "Ortnamn"
+			"labelField": "ortnamn"
 		},
 		{
 			"layerId": "Sifferkartor-socken",
