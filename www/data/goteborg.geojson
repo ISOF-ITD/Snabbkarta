@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Brännö",
+        "description": "Brännö är en ö i Göteborgs södra skärgård. Förleden syftar troligen på bränningar i havet utanför ön."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.781048,
+          57.641919
+        ]
+      }
+    }
+  ]
+}

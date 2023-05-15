@@ -1,0 +1,36 @@
+{
+	"config": {
+		"center": {
+			"lat": 57.70887,
+			"lon": 11.97456
+		},
+		"zoom": 10
+	},
+	"layers": [
+		{
+			"layerId": "ortnamn_goteborg",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": false,
+			"searchTextSelectExtended": false, 
+			"searchTextSelectDefault" : "endswith", 
+			"searchFields": [
+				"title",
+				"description"
+			],
+			"name": "Ortnamn",
+			"__url": "data/goteborg.geojson",
+			"url": "data/goteborg.geojson",
+			"clustered": false,
+			"popupTemplate": "<h2><%= title %></h2><p><%= description %></p>",
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#097c44",
+				"fillColor": "#097c44"
+			},
+			"labelField": "title"
+		}
+	]
+}
