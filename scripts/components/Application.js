@@ -576,12 +576,38 @@ export default class Application extends React.Component {
 				if (this.state.config.helpText) {
 					overlayContent = this.state.config.helpText;
 				}
+			} else {
+				// add rule to hide the help button
+				var style = document.createElement('style');
+				style.innerHTML = `
+				.help-button {
+					display: none !important;
+				}`;
+				document.head.appendChild(style);
 			}
 			if (!!this.state.config.helpTitle) {
 				title = this.state.config.helpTitle;
 			}
 			if (this.state.config.mainpart) {
 				mainpart = <option value="mainpart">Huvudled</option>
+			}
+			if (this.state.config.hideLeafletControlLayers) {
+				// add css rule to <head> to hide leaflet layer control
+				var style = document.createElement('style');
+				style.innerHTML = `
+				.leaflet-control-layers {
+					display: none !important;
+				}`;
+				document.head.appendChild(style);
+			}
+			if (this.state.config.hideIsofLogo) {
+				// add css rule to <head> to hide isof logo
+				var style = document.createElement('style');
+				style.innerHTML = `
+				.isof-logo {
+					display: none !important;
+				}`;
+				document.head.appendChild(style);
 			}
 		}
 

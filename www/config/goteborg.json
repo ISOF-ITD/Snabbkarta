@@ -4,7 +4,10 @@
 			"lat": 57.70887,
 			"lon": 11.97456
 		},
-		"zoom": 10
+		"zoom": 10,
+		"hideLeafletControlLayers": true,
+		"hideIsofLogo": true,
+		"helpPopup": false
 	},
 	"layers": [
 		{
