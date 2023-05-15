@@ -4,6 +4,34 @@
     {
       "type": "Feature",
       "properties": {
+        "title": "Angered",
+        "description": "Angered skrevs år 1415 Awngaryd. Namnet innehåller troligen en inbyggarbeteckning avungar som betyder ’de som bor vid aven, dvs. vid vattensamlingen. Efterleden är ryd som betyder ’röjning’."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.050210,
+          57.797330
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Bergum",
+        "description": "Bergum består av de två orden berg och hem. Har man besökt Berghem vet man att terrängen är mycket kuperad. Ordet hem har betydelsen ’boplats’ eller ’gård’."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.192510,
+          57.822900
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "title": "Brännö",
         "description": "Brännö är en ö i Göteborgs södra skärgård. Förleden syftar troligen på bränningar i havet utanför ön."
       },
