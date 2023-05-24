@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "title": "Angered",
-        "description": "Angered skrevs år 1415 Awngaryd. Namnet innehåller troligen en inbyggarbeteckning avungar som betyder ’de som bor vid aven, dvs. vid vattensamlingen. Efterleden är ryd som betyder ’röjning’."
+        "description": "Angered skrevs år 1415 <i>Awngaryd</i>. Namnet innehåller troligen en inbyggarbeteckning <i>avungar</i> som betyder ’de som bor vid aven’, dvs. vid vattensamlingen. Efterleden är <i>ryd</i> som betyder ’röjning’."
       },
       "geometry": {
         "type": "Point",
@@ -16,7 +16,7 @@
       "type": "Feature",
       "properties": {
         "title": "Bergum",
-        "description": "Bergum består av de två orden berg och hem. Har man besökt Berghem vet man att terrängen är mycket kuperad. Ordet hem har betydelsen ’boplats’ eller ’gård’."
+        "description": "Bergum består av de två orden <em>berg</em> och <em>hem</em>. Har man besökt Bergum vet man att terrängen är mycket kuperad. Ordet <em>hem</em> har betydelsen ’boplats’ eller ’gård’."
       },
       "geometry": {
         "type": "Point",
@@ -40,7 +40,7 @@
       "type": "Feature",
       "properties": {
         "title": "Delsjön",
-        "description": "Delsjön är en stadsdel i Göteborg. Namnet är övertaget från sjöarna Stora och Lilla Delsjön. Det innehåller troligen dialektordet del ’spene, juver (på sugga eller sto)’ och syftar på de långsmala uddarna som karakteriserar sjöarna."
+        "description": "Delsjön är en stadsdel i Göteborg. Namnet är övertaget från sjöarna Stora och Lilla Delsjön. Det innehåller troligen dialektordet <em>del</em> ’spene, juver (på sugga eller sto)’ och syftar på de långsmala uddarna som karakteriserar sjöarna."
       },
       "geometry": {
         "type": "Point",
@@ -63,7 +63,7 @@
       "type": "Feature",
       "properties": {
         "title": "Göteborg",
-        "description": "År 1473 grundades Nya Lödöse, men i privilegiebrevet kallades staden Gøthæholm. Nya Lödödse är föregångaren till staden Göteborg som anlades 1603. 1611 förstördes platsen av danskarna, och en ny stad med samma namn anlades på den södra älvstranden. Namnet har tidigare satts i samband med Göta älv, men eftersom både det gamla Gøthæholm och det senare Göteborg har anlagts genom statligt initiativ, kan namnvalen vara uttryck för beundran av det forntida Norden och götarna. Götar är en bildning till verbet gjuta och betyder ’utgjutare av sädesvätska, män’. Det är en typisk beteckning som ett folk givit sig självt."
+        "description": "År 1473 grundades Nya Lödöse, men i privilegiebrevet kallades staden Gøthæholm. Nya Lödödse är föregångaren till staden Göteborg som anlades 1603. 1611 förstördes platsen av danskarna, och en ny stad med samma namn anlades på den södra älvstranden. Namnet har tidigare satts i samband med Göta älv, men eftersom både det gamla <em>Gøthæholm</em> och det senare <em>Göteborg</em> har anlagts genom statligt initiativ, kan namnvalen vara uttryck för beundran av det forntida Norden och götarna. <em>Götar</em> är en bildning till verbet <em>gjuta</em> och betyder ’utgjutare av sädesvätska, män’. Det är en typisk beteckning som ett folk givit sig självt."
       },
       "geometry": {
         "type": "Point",
@@ -74,7 +74,7 @@
       "type": "Feature",
       "properties": {
         "title": "Haga",
-        "description": "Haga är en stadsdel i Göteborg. Namnet är känt sedan 1630-talet och var ursprungligen ordet hage i singular form. Senare har namnet övergått till plural och namnet Haga motsvarar riksspråkets form hagarna."
+        "description": "Haga är en stadsdel i Göteborg. Namnet är känt sedan 1630-talet och var ursprungligen ordet <em>hage</em> i singular form. Senare har namnet övergått till plural och namnet <em>Haga</em> motsvarar riksspråkets form <em>hagarna</em>."
       },
       "geometry": {
         "type": "Point",
@@ -85,7 +85,7 @@
       "type": "Feature",
       "properties": {
         "title": "Hisingen",
-        "description": "Namnet Hisingen är bildat till ett His- med betydelsen ’klyva’. Hisingen är skild från fastlandet genom Göta älv. Ön var delad av ett sund ända in i medeltiden. Namnet kan därför betyda ’den avskurna eller kluvna ön’."
+        "description": "Namnet Hisingen är bildat till ett <em>His</em>- med betydelsen ’klyva’. Hisingen är skild från fastlandet genom Göta älv. Ön var delad av ett sund ända in i medeltiden. Namnet kan därför betyda ’den avskurna eller kluvna ön’."
       },
       "geometry": {
         "type": "Point",
@@ -96,7 +96,8 @@
       "type": "Feature",
       "properties": {
         "title": "Hjällbo",
-        "description": "Hjällbo är en stadsdel i Göteborg. Förleden kan vara genitiv av ett fornsvenskt mansnamn Hiælle."
+        "description": "Hjällbo är en stadsdel i Göteborg. Förleden kan vara genitiv av ett fornsvenskt mansnamn <em>Hiælle</em>."
+
       },
       "geometry": {
         "type": "Point",
@@ -108,7 +109,7 @@
       "type": "Feature",
       "properties": {
         "title": "Härlanda",
-        "description": "Förleden innehåller ett ånamn Hara med betydelsen 'den gråa (ån). Namnet syftar på nuvarande Härlandabäcken. Efterleden innehåller land i betydelsen ’åker; jordstycke’."
+        "description": "Förleden innehåller ett ånamn <em>Hara</em> med betydelsen ’den gråa (ån)’. Namnet syftar på nuvarande Härlandabäcken. Efterleden innehåller <em>land</em> i betydelsen ’åker; jordstycke’."
       },
       "geometry": {
         "type": "Point",
@@ -120,7 +121,7 @@
       "type": "Feature",
       "properties": {
         "title": "Högsbo",
-        "description": "Högsbo är en stadsdel i Göteborg. Namnet avsåg ursprungligen byn Högsbo (Høgsboda 1527). Förleden innehåller antingen det fornsvenska mansnamnet Hök eller hemmansnamnet Högen."
+        "description": "Högsbo är en stadsdel i Göteborg. Namnet avsåg ursprungligen byn Högsbo (Høgsboda 1527). Förleden innehåller antingen det fornsvenska mansnamnet <em>Hök</em> eller hemmansnamnet <em>Högen</em>."
       },
       "geometry": {
         "type": "Point",
@@ -131,7 +132,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lindholmen",
-        "description": "Lindholmen är en stadsdel i Göteborg. Ursprungligen är det ett namn på en ö i Göta älv där det under medeltiden fanns en borg. Av de inhemska källorna att döma (äldst Lyndholm 1334) syftar förleden på trädbeteckningen lind medan efterleden innehåller ordet holme. Holmen det handlar om är numera sammanvuxen med Hisingen."
+        "description": "Lindholmen är en stadsdel i Göteborg. Ursprungligen är det ett namn på en ö i Göta älv där det under medeltiden fanns en borg. Av de inhemska källorna att döma (äldst Lyndholm 1334) syftar förleden på trädbeteckningen <em>lind</em> medan efterleden innehåller ordet <em>holme</em>. Holmen det handlar om är numera sammanvuxen med Hisingen."
       },
       "geometry": {
         "type": "Point",
@@ -165,7 +166,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lundby",
-        "description": "Lundby är en stadsdel i Göteborg. Namnet innehåller ordet lund i betydelsen ’skogsdunge’ och by som betyder ’gård’ eller ’by’."
+        "description": "Lundby är en stadsdel i Göteborg. Namnet innehåller ordet <em>lund</em> i betydelsen ’skogsdunge’ och <em>by</em> som betyder ’gård’ eller ’by’."
       },
       "geometry": {
         "type": "Point",
@@ -177,7 +178,7 @@
       "type": "Feature",
       "properties": {
         "title": "Majorna",
-        "description": "Majorna är en stadsdel i Göteborg. Namnet innehåller troligen pluralis av ett lån från finskan eller estniskan, där maja betyder ’koja, bod’. På en karta från 1655 står namnet intill sju små hus."
+        "description": "Majorna är en stadsdel i Göteborg. Namnet innehåller troligen pluralis av ett lån från finskan eller estniskan, där <em>maja</em> betyder ’koja, bod’. På en karta från 1655 står namnet intill sju små hus."
       },
       "geometry": {
         "type": "Point",
@@ -188,7 +189,7 @@
       "type": "Feature",
       "properties": {
         "title": "Masthugget",
-        "description": "Masthugget är en stadsdel i Göteborg. Efterleden är bestämd form av dialektordet hugge som betyder ’plats där man hugger träd, hygge’. Namnet anses tidigast ha åsyftat det område nere vid hamnen där man tillverkade master."
+        "description": "Masthugget är en stadsdel i Göteborg. Efterleden är bestämd form av dialektordet <em>hugge</em> som betyder ’plats där man hugger träd, hygge’. Namnet anses tidigast ha åsyftat det område nere vid hamnen där man tillverkade master."
       },
       "geometry": {
         "type": "Point",
@@ -211,7 +212,7 @@
       "type": "Feature",
       "properties": {
         "title": "Styrsö",
-        "description": "Styrsö är en ö i Göteborgs södra skärgård. Förleden innehåller ett gammalt ord styrir som betyder’skeppsbefälhavare’."
+        "description": "Styrsö är en ö i Göteborgs södra skärgård. Förleden innehåller ett gammalt ord <em>styrir</em> som betyder ’skeppsbefälhavare’."
       },
       "geometry": {
         "type": "Point",
@@ -245,7 +246,7 @@
       "type": "Feature",
       "properties": {
         "title": "Örgryte",
-        "description": "Namnet är sammansatt av ordet ör i betydelsen ’grus’ och gryt(e) i betydelsen ’stenig mark’. Det är troligen marken invid Kyrkbäckens nedre lopp som har åsyftats."
+        "description": "Namnet är sammansatt av ordet <em>ör</em> i betydelsen ’grus’ och <em>gryt</em>(<em>e</em>) i betydelsen ’stenig mark’. Det är troligen marken invid Kyrkbäckens nedre lopp som har åsyftats."
       },
       "geometry": {
         "type": "Point",
@@ -257,7 +258,7 @@
       "type": "Feature",
       "properties": {
         "title": "Öckerö",
-        "description": "Öckerö är en av de centrala öarna i Göteborgs norra skärgård. Den har också givit namn åt kommunen i vilket norra skärgården ingår. Tätorten har vuxit fram på ön i samband med fiskerinäringen. På 1200-talet var namnet Eikr eyia. Namnet innehåller en gammal genitivform i singularis av trädbeteckningen ek."
+        "description": "Öckerö är en av de centrala öarna i Göteborgs norra skärgård. Den har också givit namn åt kommunen i vilket norra skärgården ingår. Tätorten har vuxit fram på ön i samband med fiskerinäringen. På 1200-talet var namnet <em>Eikr eyia</em>. Namnet innehåller en gammal genitivform i singularis av trädbeteckningen <em>ek</em>."
       },
       "geometry": {
         "type": "Point",
@@ -269,7 +270,7 @@
       "type": "Feature",
       "properties": {
         "title": "Vrångö",
-        "description": "Vrångö är en ö i Göteborgs södra skärgård. Namnet innehåller ordet vrång i betydelsen ’krokig, buktad’ och åsyftar öns södra del."
+        "description": "Vrångö är en ö i Göteborgs södra skärgård. Namnet innehåller ordet <em>vrång</em> i betydelsen ’krokig, buktad’ och åsyftar öns södra del."
       },
       "geometry": {
         "type": "Point",
@@ -281,7 +282,7 @@
       "type": "Feature",
       "properties": {
         "title": "Donsö",
-        "description": "Donsö är en ö i Göteborgs norra skärgård. Namnet innehåller genitiv av ordet dun och syftar troligen på en riklig förekomst av ängsull."
+        "description": "Donsö är en ö i Göteborgs norra skärgård. Namnet innehåller genitiv av ordet <em>dun</em> och syftar troligen på en riklig förekomst av ängsull."
       },
       "geometry": {
         "type": "Point",
@@ -293,7 +294,7 @@
       "type": "Feature",
       "properties": {
         "title": "Vinga",
-        "description": "Vinga är en ö i Göteborgs södra skärgård. Namnet kommer troligen av ett gammalt danskt verb hvinge som betyder ’rasa, larma’ och namnet Vinga skulle då betyda ’holmen där det virvlar och skummar av stormar och brusande vågor’."
+        "description": "Vinga är en ö i Göteborgs södra skärgård. Namnet kommer troligen av ett gammalt danskt verb <em>hvinge</em> som betyder ’rasa, larma’ och namnet Vinga skulle då betyda ’holmen där det virvlar och skummar av stormar och brusande vågor’."
       },
       "geometry": {
         "type": "Point",
@@ -305,7 +306,7 @@
       "type": "Feature",
       "properties": {
         "title": "Hönö",
-        "description": "Hönö är en ö i Göteborgs norra skärgård. Namnet innehåller det fornvästnordiska ordet hein ’slipsten, brynsten’ som syftar på öns avslipade hällar."
+        "description": "Hönö är en ö i Göteborgs norra skärgård. Namnet innehåller det fornvästnordiska ordet <em>hein</em> ’slipsten, brynsten’ som syftar på öns avslipade hällar."
       },
       "geometry": {
         "type": "Point",
@@ -317,7 +318,7 @@
       "type": "Feature",
       "properties": {
         "title": "Källö-Knippla",
-        "description": "Källö-Knippla är en ö i Göteborgs norra skärgård. Namnet Källö syftar sannolikt på en källa (jättegryta), Saramors källa. Man kan dock inte utesluta att namnet innehåller bohuslänskans tjäl(l) som är ett dialektalt ord för strandskata. Namnet Knipplan innehåller dialektordet knebbel ’fröhus på lin’, troligen avseende skärens hopgyttrade utseende."
+        "description": "Källö-Knippla är en ö i Göteborgs norra skärgård. Namnet <em>Källö</em> syftar sannolikt på en källa (jättegryta), Saramors källa. Man kan dock inte utesluta att namnet innehåller bohuslänskans <em>tjäl</em>(<em>l</em>) som är ett dialektalt ord för strandskata. Namnet <em>Knipplan</em> innehåller dialektordet <em>knebbel</em> ’fröhus på lin’, troligen avseende skärens hopgyttrade utseende."
       },
       "geometry": {
         "type": "Point",
@@ -329,7 +330,7 @@
       "type": "Feature",
       "properties": {
         "title": "Rörö",
-        "description": "Rörö är en ö i Göteborgs norra skärgård. Namnet innehåller sannolikt växtbeteckningen rör i betydelsen ’vass’. Det förekommer vass på ön."
+        "description": "Rörö är en ö i Göteborgs norra skärgård. Namnet innehåller sannolikt växtbeteckningen <em>rör</em> i betydelsen ’vass’. Det förekommer vass på ön."
       },
       "geometry": {
         "type": "Point",
