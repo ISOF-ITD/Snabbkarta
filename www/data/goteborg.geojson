@@ -52,7 +52,7 @@
       "type": "Feature",
       "properties": {
         "title": "Gamlestaden",
-        "description": "Gamlestaden är en stadsdel i Göteborg. Det är ursprungligen ett yngre namn på staden Nya Lödödse som grundades 1473. Namnet uppkom då staden Göteborg anlades längre ned utefter Göta älv."
+        "description": "Gamlestaden är en stadsdel i Göteborg. Det är ursprungligen ett yngre namn på staden Nya Lödöse som grundades 1473. Namnet uppkom då staden Göteborg anlades längre ned utefter Göta älv."
       },
       "geometry": {
         "type": "Point",
@@ -63,7 +63,7 @@
       "type": "Feature",
       "properties": {
         "title": "Göteborg",
-        "description": "År 1473 grundades Nya Lödöse, men i privilegiebrevet kallades staden Gøthæholm. Nya Lödödse är föregångaren till staden Göteborg som anlades 1603. 1611 förstördes platsen av danskarna, och en ny stad med samma namn anlades på den södra älvstranden. Namnet har tidigare satts i samband med Göta älv, men eftersom både det gamla <em>Gøthæholm</em> och det senare <em>Göteborg</em> har anlagts genom statligt initiativ, kan namnvalen vara uttryck för beundran av det forntida Norden och götarna. <em>Götar</em> är en bildning till verbet <em>gjuta</em> och betyder ’utgjutare av sädesvätska, män’. Det är en typisk beteckning som ett folk givit sig självt."
+        "description": "År 1473 grundades Nya Lödöse, men i privilegiebrevet kallades staden Gøthæholm. Nya Lödöse är föregångaren till staden Göteborg som anlades 1603. 1611 förstördes platsen av danskarna, och en ny stad med samma namn anlades på den södra älvstranden. Namnet har tidigare satts i samband med Göta älv, men eftersom både det gamla <em>Gøthæholm</em> och det senare <em>Göteborg</em> har anlagts genom statligt initiativ, kan namnvalen vara uttryck för beundran av det forntida Norden och götarna. <em>Götar</em> är en bildning till verbet <em>gjuta</em> och betyder ’utgjutare av sädesvätska, män’. Det är en typisk beteckning som ett folk givit sig självt."
       },
       "geometry": {
         "type": "Point",
