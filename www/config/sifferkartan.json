@@ -26,8 +26,9 @@
 				"insamlare5"
 			],
 			"name": "Ekonomiska kartan",
-			"url": "https://garm-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Sifferkartor-ekonomiska-kartan-isof&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
-			"url": "https://sifferkartan.isof.se/data/sifferkartor-ekonomiska-kartan-isof.geojson",
+			"url": "https://frigg-test.isof.se/sagendatabas/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Sifferkartor-ekonomiska-kartan-isof&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"__url": "https://garm-test.isof.se/folkeservice/api/isofgeo_proxy/Sifferkartor/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Sifferkartor:Sifferkartor-ekonomiska-kartan-isof&maxFeatures=10000&outputFormat=application%2Fjson&srsname=EPSG:4326",
+			"__url": "https://sifferkartan.isof.se/data/sifferkartor-ekonomiska-kartan-isof.geojson",
 			"__url": "data/sifferkartan/sifferkartor-ekonomiska-kartan-isof.geojson",
 			"clustered": false,
 			"layers": "Sifferkartor:Sifferkartor-ekonomiska-kartan-isof",
