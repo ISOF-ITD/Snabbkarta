@@ -142,6 +142,34 @@
 			"labelField": "sockenstadnamn"
 		},
 		{
+			"layerId": "Nummerforteckning-socken",
+			"hidden": false,
+			"type": "geojson",
+			"searchable": true,
+			"searchTextSelectExtended": true, 
+			"searchTextSelectDefault" : "endswith", 
+			"searchFields": [
+				"sockenstadnamn",
+				"sok"
+				],
+			"name": "Sökbara nummerförteckningar på socken",
+			"__url": "https://garm-test.isof.se/static/js-apps/snabbkarta/data/sifferkartor_nummerforteckning_alla_filer_punkt_geo.geojson",
+			"url": "https://sifferkartan.isof.se/data/sifferkartor_nummerforteckning_alla_filer_punkt_geo.geojson",
+			"__url": "data/sifferkartan/sifferkartor_nummerforteckning_alla_filer_punkt_geo.geojson",
+			"clustered": true,
+			"layers": "Sifferkartor:sifferkartor_socken_punkt_geo",
+			"popupTemplate": "<div style=\"max-width: 400px;max-height: 300px\"><h3><%= sockenstadnamn %></h3> <%= comment %><br/> SockenStad-id: <%= sockenstadkod %> Antal sifferkartor: <%= antal %> <%= sok %></div>",
+			"popupExpanded": true,
+			"markerStyle": {
+				"type": "circle",
+				"radius": 10,
+				"strokeWeight": 1,
+				"strokeColor": "#FF0000",
+				"fillColor": "#FF0000"
+			},
+			"labelField": "sockenstadnamn"
+		},
+		{
 			"layerId": "socken",
 			"hidden": false,
 			"type": "wms",
