@@ -20,8 +20,8 @@
     const ENV = is_dev ? "dev" : is_test ? "test" : "prod";
 
     const matomo_site_ids = {
-       'dev': null,
-       'test': null,
+       'dev': 107, // I dev skickar alla ingående appar till samma id som inte ska registreras
+       'test': 107, // I test skickar alla ingående appar till samma id som inte ska registreras
        'olandskartan': 96,
        'ortnamn-tecken': 97,
        'sifferkartan': 107,
