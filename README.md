@@ -21,8 +21,15 @@ npm install gulp --g
 Does not work in ubuntu/WSL as it seems:
 sudo apt install gulp
 
+For development switch urls in config file to relative path or localhost. Example:
+			"__url": "http://127.0.0.1:5500/www/data/ortnamn-teckensprak/ortnamn-teckensprak.geojson",
+			"url": "data/ortnamn-teckensprak/ortnamn-teckensprak.geojson",
+
+
 Run with parameter config pointing to a json-config file:
 http://127.0.0.1:5500/www/?config=sifferkartan.json
+http://127.0.0.1:5500/www/?config=ortnamn-tecken.json
+http://127.0.0.1:5500/www/?config=oland.json
 
 ## Konvertera CSV till JSON
 
