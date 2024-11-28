@@ -1,5 +1,29 @@
 # ISOF Snabbkarta
 
+## Kör med gulp
+
+Extensions Live server:
+Go Live
+
+git submodule update --init --recursive
+cd
+
+Set if build is production in gulpfile.js
+var production = true;
+
+gulp
+
+Add config you want:
+http://127.0.0.1:5500/www/?config=sifferkartan.json
+
+If needed:
+npm install gulp --g
+Does not work in ubuntu/WSL as it seems:
+sudo apt install gulp
+
+Run with parameter config pointing to a json-config file:
+http://127.0.0.1:5500/www/?config=sifferkartan.json
+
 ## Konvertera CSV till JSON
 
 Se mappen `csv2json`.
