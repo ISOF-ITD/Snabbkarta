@@ -421,7 +421,11 @@ export default class Application extends React.Component {
 					marker.bindPopup(function (layer) {
 						var template = _.template(layerConfig.popupTemplate);
 						return template(feature.properties);
-					}, {maxWidth: 400, minWidth:200});
+					}, {
+						maxWidth: 400,
+						minWidth:200,
+						autoPanPadding: [90, 90],
+					});
 					// To avoid too large display extent of video files set smaller maximum extent: {maxWidth: 700, minWidth:200}
 					// See also popupTemplate in www/config/APP-NAME.json
 					// Example in ortnamn-tecken.json:
@@ -534,6 +538,7 @@ export default class Application extends React.Component {
 			vectorTileLayerStyles: layerStyles
 		});
 
+		// används den här: 'layerConfig.popupTemplate'?
 		if (layerConfig.popupTemplate) {
 			layer.on('click', function (event) {
 				var template = _.template(layerConfig.popupTemplate);
