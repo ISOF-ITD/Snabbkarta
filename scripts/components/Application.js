@@ -625,7 +625,7 @@ export default class Application extends React.Component {
 					<div className="map-title">
 					{
 						this.state.config && this.state.config.mapTitle &&
-						<text>{this.state.config.mapTitle}</text>
+						<div>{this.state.config.mapTitle}</div>
 					}
 					</div>
 				</div>
@@ -663,7 +663,18 @@ export default class Application extends React.Component {
 					</div>
 				}
 
-				<MapBase layersControlStayOpen={true} disableSwedenMap={false} ignoreOverlayLayers={true} minZoom="5" maxZoom="17" scrollWheelZoom={true} ref="map" className="map-wrapper full-fixed" />
+				<MapBase
+					layersControlStayOpen={false}
+					layersControlPosition="bottomright"
+					disableSwedenMap={false}
+					ignoreOverlayLayers={true}
+					minZoom="5"
+					maxZoom="17"
+					scrollWheelZoom={true}
+					ref="map"
+					className="map-wrapper full-fixed"
+					zoomControlPosition="bottomright"
+				/>
 
 				<InformationButton title={title} type="Uppteckning" location="app" text={overlayContent}/>
 				<InformationOverlay />
