@@ -59,50 +59,30 @@ export default class Application extends React.Component {
 
 		//TODO: Bryta ut funktion. 
 		function returnHighest(coordinate1, coordinate2) {
-			if (coordinate1 > coordinate2) {
-				return coordinate1
-			}
-			else { return coordinate2 }
+			return Math.max(coordinate1, coordinate2);
 		}
 
 		//TODO: Bryta ut funktion. 
 		function returnLowest(coordinate1, coordinate2) {
-			if (coordinate1 < coordinate2) {
-				return coordinate1
-			}
-			else { return coordinate2 }
+			return Math.min(coordinate1, coordinate2);
 		}
 
 		let selected = document.getElementById("selected");
 		let searchBox = document.getElementById("search-field");
 		let searchTerms = searchBox.value.toLowerCase().split(' ');
 		let hitsString = "";
-		//let origX = this.state.config.center.lng;
-		//let origY = this.state.config.center.lat;
-		let minX = 180
-		let minY = 90
-		let maxX = -180
-		let maxY = -90
-		//console.log(searchTerms);
-		//console.log(this.layerData);
-		//console.log(selected.options[selected.selectedIndex].value)
-
-		//Start for: 
+		let minX = 180;
+		let minY = 90;
+		let maxX = -180;
+		let maxY = -90;
 		for (var layer in this.layerData) {
 			let idSet = new Set();  
-			//console.log('searching ' + layer);
-			
-			// Sökfunktion
 			if (this.layerData[layer]) {
 
 				// Hittar layer objektet som vi ska söka
 				var searchLayer = this.layerData[layer];
-				//console.log(this.layerData[this.state.searchLayer.layerId]);
 
-				//if (searchBox.value.length > 2) {
-				if (searchBox.value.length > -1) {
-
-					// kör addGeoJsonData med data som redan finns fast med filter function
+				if (searchBox.value.length > 0) {
 					this.addGeoJsonData(searchLayer.config, searchLayer.data, function (feature) {
 						var found = false;
 
@@ -112,78 +92,50 @@ export default class Application extends React.Component {
 							// Mainly for Ölandskartan: Sökresultat som börjar på huvudled. 
 							if (selected.options[selected.selectedIndex].value == 'mainpart') {
 								if (feature.properties["hl"]) {
-									if (feature.properties["hl"].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
+									if (feature.properties["hl"].toLowerCase().substr(0, searchBox.value.length) === searchBox.value.toLowerCase()) {
 										found = true;
 										minX = returnLowest(minX, feature.geometry.coordinates[0]);
 										minY = returnLowest(minY, feature.geometry.coordinates[1]);
 										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-										//console.log('id', feature.id);
 										idSet.add(feature.id); 
 									}
 								}
-							} else 
-							{
-								if (selected.options[selected.selectedIndex].value == 'endswith') {
-									// Sökresultat som sultar på sökterm. Efterled. 
-									if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) == searchBox.value.toLowerCase()) {
+							} else {
+								if (selected.options[selected.selectedIndex].value === 'endswith') {
+									if (feature.properties[searchField].toLowerCase().substr(feature.properties[searchField].length - searchBox.value.length) === searchBox.value.toLowerCase()) {
 										found = true;
 										minX = returnLowest(minX, feature.geometry.coordinates[0]);
 										minY = returnLowest(minY, feature.geometry.coordinates[1]);
 										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-										//console.log('id', feature.id);
 										idSet.add(feature.id); 
-
 									}
 								}
-
-								else if (selected.options[selected.selectedIndex].value == 'startswith') {
-									// Sökresultat som börjar på sökterm. Förled. 
-									if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) == searchBox.value.toLowerCase()) {
+								else if (selected.options[selected.selectedIndex].value === 'startswith') {
+									if (feature.properties[searchField].toLowerCase().substr(0, searchBox.value.length) === searchBox.value.toLowerCase()) {
 										found = true;
 										minX = returnLowest(minX, feature.geometry.coordinates[0]);
 										minY = returnLowest(minY, feature.geometry.coordinates[1]);
 										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-										//console.log('id', feature.id);
 										idSet.add(feature.id); 
 									}
 								}
 								else {
-									// Sökresultat som innehåller sökterm. 
-
-									// Old code: 
-									//	if (feature.properties[searchField].toLowerCase().indexOf(searchBox.value.toLowerCase()) > -1) {
-									//		found = true;
-									//	};
-
-									// Sökresultat som innehåller sökterm(er).
-									// New code: 
-									//TODO: Bryta ut funktion. 
-									function hasHit(searchTerms) {
+									function hasHit(searchTerm) { // Ändrad parameter från searchTerms till searchTerm
 										if (feature.properties[searchField]) {						
-											if (searchTerms && searchTerms.length > 0) { 
-												if (feature.properties[searchField].toLowerCase().indexOf(searchTerms.toLowerCase()) > -1) {
-													return true;
-												}
-												else {
-													return false
-												}
-											}
-										} else {
-											//console.log(searchField)
-											//console.log(feature.properties)
+											return feature.properties[searchField].toLowerCase().includes(searchTerm);
 										}
+										return false;
 									}
-
+	
 									if (searchTerms.every(hasHit)) {
 										found = true;
 										minX = returnLowest(minX, feature.geometry.coordinates[0]);
 										minY = returnLowest(minY, feature.geometry.coordinates[1]);
 										maxX = returnHighest(maxX, feature.geometry.coordinates[0]);
 										maxY = returnHighest(maxY, feature.geometry.coordinates[1]);
-										//console.log('id', feature.id);
 										idSet.add(feature.id); 
 									}
 								}
@@ -192,25 +144,30 @@ export default class Application extends React.Component {
 						return found;
 					});
 				}
-				else {
+				else { // När sökfältet är tomt
 					this.addGeoJsonData(searchLayer.config, searchLayer.data);
 				}
-				
 			}
-			
+	
 			hitsString += idSet.size + ' träffar i ' + this.layerData[layer].config.name + '<br/>';
-			//Endfor: 
 		}
-		document.getElementById("hits").innerHTML = hitsString
-		//console.log(minX, minY, maxX, maxY);
-		var southWest = L.latLng(minY, minX);
-		var northEast = L.latLng(maxY, maxX);
-		var bounds = L.latLngBounds(southWest, northEast);
-		//console.log('bounds', bounds); 
-		if (minX != 180 && minY != 90 && maxX != -180 && maxY != -90) {
+	
+		document.getElementById("hits").innerHTML = hitsString;
+	
+		if (minX !== 180 && minY !== 90 && maxX !== -180 && maxY !== -90) {
+			var southWest = L.latLng(minY, minX);
+			var northEast = L.latLng(maxY, maxX);
+			var bounds = L.latLngBounds(southWest, northEast);
 			this.map.fitBounds(bounds, { padding: [50, 50] });
 		}
+		else {
+			// Återställ till standardvy om inga sökresultat finns
+			if (this.state.config && this.state.config.center && this.state.config.zoom) {
+				this.map.setView(this.state.config.center, this.state.config.zoom);
+			}
+		}
 	}
+	
 
 	createStyleSheet() {
 		// Lägger till stylesheet
